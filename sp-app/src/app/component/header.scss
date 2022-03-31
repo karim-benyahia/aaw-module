@@ -1,0 +1,52 @@
+header {
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+  height: var(--heading-height);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+
+
+  > div > a {
+    margin: 0.8em;
+    display: flex;
+    align-items: center;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 6em;
+    width: 100%;
+    height: calc(var(--heading-height) + 10em);
+    z-index: -1;
+    transform: skewY(-3.5deg);
+    background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)),
+    var(--url-header) no-repeat center,
+    linear-gradient(#4e4376, #2b5876);
+    background-size: cover;
+    border-bottom: .2em solid #fff;
+  }
+
+
+  a {
+    text-decoration: none;
+    color: #f1f0f0;
+    font-size: xx-large;
+  }
+
+  img.icon {
+    margin-right: 20px;
+    width: 32px;
+    filter: invert(1);
+  }
+
+
+
+}

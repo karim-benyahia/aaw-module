@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/general.html :: head"></head>
+
+<body>
+<header th:replace="fragments/general.html :: header (title=${title})"></header>
+
+<aside th:replace="fragments/general.html :: aside (active='person-list')"></aside>
+<main>
+
+    <h1 th:utext="${message}">..!..</h1>
+
+    <div th:each="event : ${events}">
+
+        <div class="event-name"><span th:text="${event.name}"></span></div>
+        <table class="styled-table" style="width: -webkit-fill-available;margin:0 50px">
+            <thead>
+
+            <tr>
+                <th style="width:100px">id</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th style="width:50px; padding:0;text-align: center">
+                    <a title="Ajouter une personne" class="add-person" th:href="@{'person/add?event='+${event.id}}">+</a>
+                </th>
+            </tr>
+            </thead>
+        </table>
+        <div class="list-person">
+            <table class="styled-table" style="flex: 1;margin:0">
+                <tbody>
+                <tr th:if="${person.event.id} == ${event.id}" th:each="person : ${persons}">
+                    <td style="width:100px" th:utext="${person.id}">...</td>
+                    <td th:utext="${person.firstName}">...</td>
+                    <td th:utext="${person.lastName}">...</td>
+                    <td style="width:50px;padding:0;text-align: center">
+                        <form th:action="@{/person/{id}(id=${person.id})}"
+                              style="    display: flex; justify-content: center; align-items: center;"
+                              th:method="DELETE">
+                            <button th:title="'Supprimer ' + ${person.firstName}" type="submit" class="del-person">
+                                <span>x</span></button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+<footer th:replace="fragments/general.html :: footer(author=${author}, curse=${curse})"></footer>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/general.html :: head"></head>
+
+<body>
+<header th:replace="fragments/general.html :: header (title=${title})"></header>
+
+<aside th:replace="fragments/general.html :: aside (active='event-add')"></aside>
+<main>
+
+    <h1>Ajouter un événement</h1>
+
+    <!--
+       In Thymeleaf the equivalent of
+       JSP's ${pageContext.request.contextPath}/edit.html
+       would be @{/edit.html}
+       -->
+
+    <form class="form-ajout"
+          th:action="@{/event}"
+          th:object="${eventForm}" method="POST">
+        <label th:for="*{name}">Nom</label>
+        <input type="text" th:field="*{name}" required/>
+        <label th:for="*{date}">Date</label>
+        <input type="date" th:field="*{date}" required/>
+        <div class="action">
+            <a class="annuler-ajout" href="/">Annuler</a>
+            <input class="valider-ajout" type="submit" value="Valider"/>
+        </div>
+    </form>
+
+    <!-- Check if errorMessage is not null and not empty -->
+
+    <div th:if="${errorMessage}" th:utext="${errorMessage}"
+         style="color:red;font-style:italic;">
+        ...
+    </div>
+</main>
+<footer th:replace="fragments/general.html :: footer(author=${author}, curse=${curse})"></footer>
+
+</body>
+</html>

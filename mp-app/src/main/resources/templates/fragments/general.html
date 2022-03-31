@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title>Multi Page Application</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script src="https://kit.fontawesome.com/186bff8836.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div>
+    <aside th:fragment="aside (active)">
+        <div class="menu">
+            <ul>
+                <li th:if="${active} == 'home'" class="active"><i class="fas fa-home"></i> Home</li>
+                <li th:if="${active} != 'home'"><a href="/"><i class="fas fa-home"></i> Home</a></li>
+
+                <li>
+                    <i class="fas fa-calendar"></i> Evénements
+                </li>
+                <ul>
+                    <li th:if="${active} != 'event-list'"><a href="/event"><i class="fas fa-list"></i> Liste</a></li>
+                    <li th:if="${active} == 'event-list'" class="active"><i class="fas fa-list"></i>Liste</li>
+
+                    <li th:if="${active} == 'event-add'" class="active"><i class="fas fa-calendar-plus"></i> Ajout
+                        d'événements
+                    </li>
+                    <li th:if="${active} != 'event-add'"><a href="/event/add"><i class="fas fa-calendar-plus"></i> Ajout
+                        d'événements</a></li>
+                </ul>
+                <li><i class="fas fa-user"></i> Participants</li>
+                <ul>
+                    <li th:if="${active} == 'person-list'" class="active"><i class="fas fa-list"></i> Liste</li>
+                    <li th:if="${active} != 'person-list'"><a href="/person"><i class="fas fa-list"></i> Liste</a></li>
+
+                    <li th:if="${active} == 'person-add'" class="active"><i class="fas fa-user-plus"></i> Ajout de
+                        participants
+                    </li>
+                    <li th:if="${active} != 'person-add'"><a href="/person/add"><i class="fas fa-user-plus"></i> Ajout
+                        de
+                        participants</a></li>
+                </ul>
+            </ul>
+        </div>
+    </aside>
+
+    <header th:fragment="header (title)">
+        <div>
+            <a href="index">
+                <img th:src="@{/img/webapp.png}" class="icon"/>
+                <span th:utext="${title}">..!..</span>
+            </a>
+        </div>
+    </header>
+
+    <footer th:fragment="footer (author, curse)">
+        <div th:utext="${author}+' - '+ ${curse}">..!..</div>
+        <div>
+            <img th:src="@{/img/logo-serli.png}"/>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

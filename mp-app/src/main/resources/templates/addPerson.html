@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/general.html :: head"></head>
+
+<body>
+<header th:replace="fragments/general.html :: header (title=${title})"></header>
+
+<aside th:replace="fragments/general.html :: aside (active='person-add')"></aside>
+<main>
+
+    <h1>Ajouter un participant</h1>
+
+    <!--
+       In Thymeleaf the equivalent of
+       JSP's ${pageContext.request.contextPath}/edit.html
+       would be @{/edit.html}
+       -->
+
+    <form class="form-ajout"
+          th:action="@{/person}"
+          th:object="${personForm}" method="POST">
+        <label th:for="*{firstName}">Prénom</label>
+        <input type="text" th:field="*{firstName}" required/>
+        <label th:for="*{lastName}">Nom</label>
+        <input type="text" th:field="*{lastName}" required/>
+        <label th:for="*{eventId}">Evénement</label>
+        <select th:field="*{eventId}" required>
+            <option value=""></option>
+            <option th:each="event : ${events}" th:value="${event.id}" th:text="${event.name}"></option>
+        </select>
+        <div class="action">
+            <a class="annuler-ajout" href="/">Annuler</a>
+            <input class="valider-ajout" type="submit" value="Valider"/>
+        </div>
+    </form>
+
+    <!-- Check if errorMessage is not null and not empty -->
+
+    <div th:if="${errorMessage}" th:utext="${errorMessage}"
+         style="color:red;font-style:italic;">
+        ...
+    </div>
+</main>
+<footer th:replace="fragments/general.html :: footer(author=${author}, curse=${curse})"></footer>
+
+</body>
+</html>

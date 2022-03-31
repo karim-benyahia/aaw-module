@@ -1,0 +1,27 @@
+{
+  "name": "spa",
+  "version": "1.0.0",
+  "main": "dist/index.min.js",
+  "license": "MIT",
+  "source": "./src/app/index.jsx",
+  "scripts": {
+    "start-web": "parcel -p 3000",
+    "build": "parcel build ",
+    "start-dev": "nodemon server.js",
+    "start": "forever server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3",
+    "forever": "^4.0.3",
+    "fs": "^0.0.1-security",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "6"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "2.4.0",
+    "nodemon": "^2.0.15",
+    "parcel": "^2.4.0"
+  }
+}
