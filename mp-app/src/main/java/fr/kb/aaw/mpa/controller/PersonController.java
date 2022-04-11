@@ -1,10 +1,12 @@
 package fr.kb.aaw.mpa.controller;
 
+import fr.kb.aaw.mpa.context.Context;
 import fr.kb.aaw.mpa.form.PersonForm;
 import fr.kb.aaw.mpa.model.Event;
 import fr.kb.aaw.mpa.model.EventRecord;
 import fr.kb.aaw.mpa.model.Person;
 import fr.kb.aaw.mpa.model.PersonRecord;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,12 +20,8 @@ import java.util.stream.Collectors;
 @Controller
 public class PersonController {
 
-    public static List<PersonRecord> persons = new ArrayList<>();
-
-    static {
-        persons.add(new PersonRecord(1,"Bill", "Gates", EventController.events.get(0)));
-        persons.add(new PersonRecord(2,"Steve", "Jobs", EventController.events.get(1)));
-    }
+    @Autowired
+    private Context context;
 
     // Injectez (inject) via application.properties.
     @Value("${welcome.message}")
@@ -39,19 +37,19 @@ public class PersonController {
     private String errorMessage;
 
 
-    @GetMapping(value = { "/person" })
+    @GetMapping(value = {"/person"})
     public String showPersonListPage(Model model) {
 
         model.addAttribute("author", author);
         model.addAttribute("curse", curse);
         model.addAttribute("title", title);
-        model.addAttribute("persons", persons);
-        model.addAttribute("events", EventController.events);
+        model.addAttribute("persons", context.getPersons());
+        model.addAttribute("events", context.getEvents());
         return "personList";
     }
 
-    @GetMapping(value = { "/person/add" })
-    public String showAddPersonPage(Model model,@RequestParam(required = false) Integer event) {
+    @GetMapping(value = {"/person/add"})
+    public String showAddPersonPage(Model model, @RequestParam(required = false) Integer event) {
 
         PersonForm personForm = new PersonForm("", "", event);
 
@@ -59,13 +57,12 @@ public class PersonController {
         model.addAttribute("author", author);
         model.addAttribute("curse", curse);
         model.addAttribute("title", title);
-        model.addAttribute("events", EventController.events);
+        model.addAttribute("events", context.getEvents());
         return "addPerson";
     }
 
 
-
-    @PostMapping(value = { "/person" })
+    @PostMapping(value = {"/person"})
     public String savePerson(Model model, @ModelAttribute("personForm") PersonForm personForm) {
 
         String firstName = personForm.firstName();
@@ -74,16 +71,17 @@ public class PersonController {
 
         if (!StringUtils.isEmpty(firstName)
                 && !StringUtils.isEmpty(lastName)) {
-            Integer max = persons.stream().map(p -> p.id())
+            Integer max = context.getPersons().stream().map(p -> p.id())
                     .max((a, b) -> a - b).orElse(0);
 
-            EventRecord event = EventController.events.stream()
-                    .filter(e->e.id()==eventId)
+            EventRecord event = context.getEvents()
+                    .stream()
+                    .filter(e -> e.id() == eventId)
                     .findFirst()
-                    .orElseThrow(()->new IllegalStateException("L'evenement n'existe pas"));
+                    .orElseThrow(() -> new IllegalStateException("L'evenement n'existe pas"));
 
             PersonRecord newPerson = new PersonRecord(max + 1, firstName, lastName, event);
-            persons.add(newPerson);
+            context.addPerson(newPerson);
 
             return "redirect:/person";
         }
@@ -92,12 +90,13 @@ public class PersonController {
         return "addPerson";
     }
 
-    @DeleteMapping(value = { "/person/{id}" })
+    @DeleteMapping(value = {"/person/{id}"})
     public String delPerson(Model model, @PathVariable("id") Integer id) {
 
 
         if (id != null) {
-            persons = persons.stream().filter(p->p.id()!=id).collect(Collectors.toList());
+            List<PersonRecord> personsFiltered = context.getPersons().stream().filter(p -> p.id() != id).collect(Collectors.toList());
+            context.setPersons(personsFiltered);
             return "redirect:/person";
         }
 

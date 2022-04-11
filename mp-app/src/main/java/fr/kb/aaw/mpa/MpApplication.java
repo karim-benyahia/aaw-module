@@ -10,6 +10,4 @@ public class MpApplication {
         SpringApplication.run(MpApplication.class, args);
     }
 
-
-
 }

@@ -1,10 +1,12 @@
 package fr.kb.aaw.mpa.controller;
 
+import fr.kb.aaw.mpa.context.Context;
 import fr.kb.aaw.mpa.form.EventForm;
 import fr.kb.aaw.mpa.form.PersonForm;
 import fr.kb.aaw.mpa.model.Event;
 import fr.kb.aaw.mpa.model.EventRecord;
 import fr.kb.aaw.mpa.model.Person;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,12 +22,8 @@ import java.util.stream.Collectors;
 @Controller
 public class EventController {
 
-    public static List<EventRecord> events = new ArrayList<>();
-
-    static {
-        events.add(new EventRecord(1,"Mud Day", LocalDate.now().toString()));
-        events.add(new EventRecord(2,"Vide grenier", LocalDate.now().toString()));
-    }
+    @Autowired
+    private Context context;
 
     // Injectez (inject) via application.properties.
     @Value("${welcome.message}")
@@ -47,7 +45,7 @@ public class EventController {
         model.addAttribute("author", author);
         model.addAttribute("curse", curse);
         model.addAttribute("title", title);
-        model.addAttribute("events", events);
+        model.addAttribute("events", context.getEvents());
         return "eventList";
     }
 
@@ -69,11 +67,11 @@ public class EventController {
         String date = event.date();
 
         if (!StringUtils.isEmpty(firstName)) {
-            Integer max = events.stream().map(p -> p.id())
+            Integer max = context.getEvents().stream().map(p -> p.id())
                     .max((a, b) -> a - b).orElse(0);
 
             EventRecord newEvent = new EventRecord(max + 1, firstName, date);
-            events.add(newEvent);
+            context.addEvent(newEvent);
 
             return "redirect:/event";
         }
@@ -87,7 +85,8 @@ public class EventController {
 
 
         if (id != null) {
-            events = events.stream().filter(p -> p.id() != id).collect(Collectors.toList());
+            List<EventRecord> eventsFiltered = context.getEvents().stream().filter(p -> p.id() != id).collect(Collectors.toList());
+            context.setEvents(eventsFiltered);
             return "redirect:/event";
         }
 

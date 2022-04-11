@@ -18,9 +18,6 @@ public class IndexController {
     @Value("${title.message}")
     private String title;
 
-    @Value("${error.message}")
-    private String errorMessage;
-
     @GetMapping(value = {"/", "/index"})
     public String index(Model model) {
 
