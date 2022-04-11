@@ -2,10 +2,7 @@ package fr.kb.aaw.mpa.controller;
 
 import fr.kb.aaw.mpa.context.Context;
 import fr.kb.aaw.mpa.form.EventForm;
-import fr.kb.aaw.mpa.form.PersonForm;
-import fr.kb.aaw.mpa.model.Event;
 import fr.kb.aaw.mpa.model.EventRecord;
-import fr.kb.aaw.mpa.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -13,9 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -71,7 +65,7 @@ public class EventController {
                     .max((a, b) -> a - b).orElse(0);
 
             EventRecord newEvent = new EventRecord(max + 1, firstName, date);
-            context.addEvent(newEvent);
+            context.add(newEvent);
 
             return "redirect:/event";
         }

@@ -1,6 +1,5 @@
 package fr.kb.aaw.mpa.context;
 
-import fr.kb.aaw.mpa.controller.EventController;
 import fr.kb.aaw.mpa.model.EventRecord;
 import fr.kb.aaw.mpa.model.PersonRecord;
 import org.springframework.stereotype.Component;
@@ -15,12 +14,12 @@ public class Context {
 
     private List<PersonRecord> persons = new ArrayList<>();
 
-    public Context(){
-        events.add(new EventRecord(1,"Mud Day", LocalDate.now().toString()));
-        events.add(new EventRecord(2,"Vide grenier", LocalDate.now().toString()));
+    public Context() {
+        events.add(new EventRecord(1, "Mud Day", LocalDate.now().toString()));
+        events.add(new EventRecord(2, "Vide grenier", LocalDate.now().toString()));
 
-        persons.add(new PersonRecord(1,"Bill", "Gates", events.get(0)));
-        persons.add(new PersonRecord(2,"Steve", "Jobs", events.get(1)));
+        persons.add(new PersonRecord(1, "Bill", "Gates", events.get(0)));
+        persons.add(new PersonRecord(2, "Steve", "Jobs", events.get(1)));
     }
 
     public List<EventRecord> getEvents() {
@@ -39,11 +38,11 @@ public class Context {
         this.persons = persons;
     }
 
-    public void addEvent(EventRecord newEvent) {
+    public void add(EventRecord newEvent) {
         this.events.add(newEvent);
     }
 
-    public void addPerson(PersonRecord newPerson) {
+    public void add(PersonRecord newPerson) {
         this.persons.add(newPerson);
     }
 }

@@ -2,9 +2,7 @@ package fr.kb.aaw.mpa.controller;
 
 import fr.kb.aaw.mpa.context.Context;
 import fr.kb.aaw.mpa.form.PersonForm;
-import fr.kb.aaw.mpa.model.Event;
 import fr.kb.aaw.mpa.model.EventRecord;
-import fr.kb.aaw.mpa.model.Person;
 import fr.kb.aaw.mpa.model.PersonRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -81,7 +78,7 @@ public class PersonController {
                     .orElseThrow(() -> new IllegalStateException("L'evenement n'existe pas"));
 
             PersonRecord newPerson = new PersonRecord(max + 1, firstName, lastName, event);
-            context.addPerson(newPerson);
+            context.add(newPerson);
 
             return "redirect:/person";
         }
