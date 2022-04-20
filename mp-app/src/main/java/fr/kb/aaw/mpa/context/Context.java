@@ -2,41 +2,27 @@ package fr.kb.aaw.mpa.context;
 
 import fr.kb.aaw.mpa.model.EventRecord;
 import fr.kb.aaw.mpa.model.PersonRecord;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Component
-public class Context {
-    private List<EventRecord> events = new ArrayList<>();
-
-    private List<PersonRecord> persons = new ArrayList<>();
+public record Context(List<EventRecord> events,List<PersonRecord> persons) {
 
     public Context() {
-        events.add(new EventRecord(1, "Mud Day", LocalDate.now().toString()));
-        events.add(new EventRecord(2, "Vide grenier", LocalDate.now().toString()));
+        this(new ArrayList<>(), new ArrayList<>());
+        events().add(new EventRecord(UUID.randomUUID(), "Mud Day", LocalDate.now().toString()));
+        events().add(new EventRecord(UUID.randomUUID(), "Vide grenier", LocalDate.now().toString()));
 
-        persons.add(new PersonRecord(1, "Bill", "Gates", events.get(0)));
-        persons.add(new PersonRecord(2, "Steve", "Jobs", events.get(1)));
+        persons().add(new PersonRecord(UUID.randomUUID(), "Bill", "Gates", events.get(0)));
+        persons().add(new PersonRecord(UUID.randomUUID(), "Steve", "Jobs", events.get(1)));
     }
 
-    public List<EventRecord> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<EventRecord> events) {
-        this.events = events;
-    }
-
-    public List<PersonRecord> getPersons() {
-        return persons;
-    }
-
-    public void setPersons(List<PersonRecord> persons) {
-        this.persons = persons;
-    }
 
     public void add(EventRecord newEvent) {
         this.events.add(newEvent);
@@ -44,5 +30,15 @@ public class Context {
 
     public void add(PersonRecord newPerson) {
         this.persons.add(newPerson);
+    }
+
+    public void updatePersons(List<PersonRecord> personsFiltered) {
+        persons.clear();
+        persons.addAll(personsFiltered);
+    }
+
+    public void updateEvents(List<EventRecord> eventsFiltered) {
+        events.clear();
+        events.addAll(eventsFiltered);
     }
 }

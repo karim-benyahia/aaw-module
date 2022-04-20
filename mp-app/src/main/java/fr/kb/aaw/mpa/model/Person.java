@@ -1,21 +1,22 @@
 package fr.kb.aaw.mpa.model;
 
+import javax.persistence.*;
+import java.util.UUID;
+
+@Entity
+@Table(name="PERSON")
 public class Person {
 
+    @Id
+    @GeneratedValue
+    private UUID id;
     private String firstName;
     private String lastName;
-    private Integer id;
+    @ManyToOne
     private Event event;
 
     public Person() {
 
-    }
-
-    public Person(Integer id, String firstName, String lastName, Event event) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.id=id;
-        this.event = event;
     }
 
     public String getFirstName() {
@@ -36,11 +37,11 @@ public class Person {
         return this;
     }
 
-    public Integer getId() {
+    public UUID getId() {
         return id;
     }
 
-    public Person setId(Integer id) {
+    public Person setId(UUID id) {
         this.id = id;
         return this;
     }

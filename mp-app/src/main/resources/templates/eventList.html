@@ -2,6 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/general.html :: head"></head>
 
+<style>
+
+    .id-column{
+        max-width: 100px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        min-width: 100px;
+    }
+
+</style>
+
 <body>
 
     <header th:replace="fragments/general.html :: header (title=${title})"></header>
@@ -11,11 +23,11 @@
 
         <h1 th:utext="${message}">..!..</h1>
 
-        <table class="styled-table" style="width: -webkit-fill-available;margin:0 50px">
+        <table class="styled-table">
             <thead>
 
             <tr>
-                <th style="width:100px">id</th>
+                <th class="id-column" >id</th>
                 <th>Nom</th>
                 <th>date</th>
                 <th style="width:50px; padding:0;text-align: center">
@@ -28,7 +40,7 @@
             <table class="styled-table" style="flex: 1;margin:0">
                 <tbody>
                 <tr th:each="event : ${events}">
-                    <td style="width:100px" th:utext="${event.id}">...</td>
+                    <td class="id-column" th:utext="${event.id}">...</td>
                     <td th:utext="${event.name}">...</td>
                     <td th:utext="${event.date}">...</td>
                     <td style="width:50px;padding:0;text-align: center">

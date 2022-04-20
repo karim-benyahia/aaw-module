@@ -284,6 +284,8 @@ footer img {
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     color: #444;
+    width: -webkit-fill-available;
+    margin:0 50px
 }
 
 .styled-table thead tr {

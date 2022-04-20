@@ -1,6 +1,8 @@
 package fr.kb.aaw.mpa.form;
 
-public record PersonForm(String firstName, String lastName, Integer eventId) {
+import java.util.UUID;
+
+public record PersonForm(String firstName, String lastName, UUID eventId) {
 }
 
 

@@ -3,6 +3,7 @@ package fr.kb.aaw.mpa.controller;
 import fr.kb.aaw.mpa.context.Context;
 import fr.kb.aaw.mpa.form.EventForm;
 import fr.kb.aaw.mpa.model.EventRecord;
+import fr.kb.aaw.mpa.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -11,46 +12,25 @@ import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Controller
-public class EventController {
-
-    @Autowired
-    private Context context;
-
-    // Injectez (inject) via application.properties.
-    @Value("${welcome.message}")
-    private String message;
-    @Value("${author.message}")
-    private String author;
-    @Value("${curse.message}")
-    private String curse;
-    @Value("${title.message}")
-    private String title;
-
-    @Value("${error.message}")
-    private String errorMessage;
+public class EventController extends BaseController{
 
 
     @GetMapping(value = {"/event"})
     public String showEventListPage(Model model) {
-
-        model.addAttribute("author", author);
-        model.addAttribute("curse", curse);
-        model.addAttribute("title", title);
-        model.addAttribute("events", context.getEvents());
+        initModel(model);
+        model.addAttribute("events", eventService.events());
         return "eventList";
     }
 
     @GetMapping(value = {"/event/add"})
     public String showAddEventPage(Model model) {
-
         EventForm eventForm = new EventForm("", "");
         model.addAttribute("eventForm", eventForm);
-        model.addAttribute("author", author);
-        model.addAttribute("curse", curse);
-        model.addAttribute("title", title);
+        initModel(model);
         return "addEvent";
     }
 
@@ -61,11 +41,7 @@ public class EventController {
         String date = event.date();
 
         if (!StringUtils.isEmpty(firstName)) {
-            Integer max = context.getEvents().stream().map(p -> p.id())
-                    .max((a, b) -> a - b).orElse(0);
-
-            EventRecord newEvent = new EventRecord(max + 1, firstName, date);
-            context.add(newEvent);
+            eventService.saveEvent(firstName, date);
 
             return "redirect:/event";
         }
@@ -75,12 +51,11 @@ public class EventController {
     }
 
     @DeleteMapping(value = {"/event/{id}"})
-    public String delEvent(Model model, @PathVariable("id") Integer id) {
+    public String delEvent(Model model, @PathVariable("id") UUID id) {
 
 
         if (id != null) {
-            List<EventRecord> eventsFiltered = context.getEvents().stream().filter(p -> p.id() != id).collect(Collectors.toList());
-            context.setEvents(eventsFiltered);
+            eventService.delEvent(id);
             return "redirect:/event";
         }
 

@@ -1,18 +1,25 @@
 package fr.kb.aaw.mpa.model;
 
+import javax.persistence.*;
 import java.util.Date;
+import java.util.UUID;
 
+@Entity
+@Table(name="EVENT")
 public class Event {
 
     private String name;
     private String date;
-    private Integer id;
+
+    @Id
+    @GeneratedValue
+    private UUID id;
 
     public Event() {
 
     }
 
-    public Event(Integer id, String name, String date) {
+    public Event(UUID id, String name, String date) {
         this.name = name;
         this.date = date;
         this.id=id;
@@ -29,11 +36,11 @@ public class Event {
 
 
 
-    public Integer getId() {
+    public UUID getId() {
         return id;
     }
 
-    public Event setId(Integer id) {
+    public Event setId(UUID id) {
         this.id = id;
         return this;
     }
