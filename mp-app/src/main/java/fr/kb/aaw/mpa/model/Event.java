@@ -9,7 +9,7 @@ import java.util.UUID;
 public class Event {
 
     private String name;
-    private String date;
+    private Date date;
 
     @Id
     @GeneratedValue
@@ -19,7 +19,7 @@ public class Event {
 
     }
 
-    public Event(UUID id, String name, String date) {
+    public Event(UUID id, String name, Date date) {
         this.name = name;
         this.date = date;
         this.id=id;
@@ -45,11 +45,11 @@ public class Event {
         return this;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public Event setDate(String date) {
+    public Event setDate(Date date) {
         this.date = date;
         return this;
     }

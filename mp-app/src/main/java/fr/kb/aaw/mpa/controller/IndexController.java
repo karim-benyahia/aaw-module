@@ -29,5 +29,10 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping(value = {"/curse"})
+    public String curse(Model model) {
+        return "curse";
+    }
+
 
 }

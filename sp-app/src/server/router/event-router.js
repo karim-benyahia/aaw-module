@@ -14,7 +14,6 @@ let events = [
     }
 ]
 
-
 router.get("/", (req, res)=>{
     res.send(events);
 })
@@ -33,7 +32,6 @@ router.delete("/:id", (req, res)=>{
     events = events.filter(p=>p.id !== Number(req.params.id))
     res.send(events);
 })
-
 
 module.exports= {
     eventRouter:router,

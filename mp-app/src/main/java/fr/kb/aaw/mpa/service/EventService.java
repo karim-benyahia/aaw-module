@@ -12,6 +12,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -41,7 +42,7 @@ public class EventService {
         }
     }
 
-    public void saveEvent(String firstName, String date) {
+    public void saveEvent(String firstName, Date date) {
         if (withContext) {
             EventRecord newEvent = new EventRecord(UUID.randomUUID(), firstName, date);
             context.add(newEvent);

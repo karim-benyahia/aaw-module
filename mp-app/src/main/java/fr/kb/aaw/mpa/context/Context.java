@@ -7,7 +7,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,8 +18,8 @@ public record Context(List<EventRecord> events,List<PersonRecord> persons) {
 
     public Context() {
         this(new ArrayList<>(), new ArrayList<>());
-        events().add(new EventRecord(UUID.randomUUID(), "Mud Day", LocalDate.now().toString()));
-        events().add(new EventRecord(UUID.randomUUID(), "Vide grenier", LocalDate.now().toString()));
+        events().add(new EventRecord(UUID.randomUUID(), "Mud Day", new Date()));
+        events().add(new EventRecord(UUID.randomUUID(), "Vide grenier", new Date()));
 
         persons().add(new PersonRecord(UUID.randomUUID(), "Bill", "Gates", events.get(0)));
         persons().add(new PersonRecord(UUID.randomUUID(), "Steve", "Jobs", events.get(1)));

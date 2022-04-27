@@ -23,12 +23,15 @@ router.get("/", (req, res)=>{
     res.send(persons);
 })
 
-router.post("/", (req, res)=>{
-    const person = req.body;
-
+function getNextId() {
     let values = persons.map(p => p.id);
     let max = Math.max(...values);
-    person.id = max + 1;
+    return max+1;
+}
+
+router.post("/", (req, res)=>{
+    const person = req.body;
+    person.id = getNextId();
     persons.push(person);
     res.send(persons);
 })

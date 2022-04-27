@@ -17,8 +17,8 @@
 <body>
 
     <header th:replace="fragments/general.html :: header (title=${title})"></header>
-
     <aside th:replace="fragments/general.html :: aside (active='event-list')"></aside>
+
     <main>
 
         <h1 th:utext="${message}">..!..</h1>
@@ -42,7 +42,7 @@
                 <tr th:each="event : ${events}">
                     <td class="id-column" th:utext="${event.id}">...</td>
                     <td th:utext="${event.name}">...</td>
-                    <td th:utext="${event.date}">...</td>
+                    <td th:utext="${#dates.format(event.date,'dd/MM/yyyy')}">...</td>
                     <td style="width:50px;padding:0;text-align: center">
                         <form th:action="@{/event/{id}(id=${event.id})}"
                               style="    display: flex; justify-content: center; align-items: center;"
@@ -55,7 +55,6 @@
                 </tbody>
             </table>
         </div>
-
     </main>
     <footer th:replace="fragments/general.html :: footer(author=${author}, curse=${curse})"></footer>
 

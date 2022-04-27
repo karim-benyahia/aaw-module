@@ -13,10 +13,11 @@ import Home from "../views/home"
 
 const App = () => {
 
+
+
     const Main = () => {
         return (
             <div>
-
                 <Aside/>
                 <Header title="SinglePage Application"/>
                 <Outlet/>

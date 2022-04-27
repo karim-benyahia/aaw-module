@@ -1,20 +1,18 @@
 const express = require("express");
-const bodyParser = require('body-parser')
 const fs = require("fs");
 
 const app = express(); // instantiate Express app
 
-const apiRouter = require("./src/server/router/api-router");
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.json());
 
 app.use('/', express.static('dist'));
 app.use('/', express.static('public'));
 
+const apiRouter = require("./src/server/router/api-router");
 app.use("/api", apiRouter);
 
-const PORT = 8082;
+const PORT = 3000;
 
 app.get('/*', (req, res) => {
 
@@ -37,6 +35,7 @@ app.get('/*', (req, res) => {
     });
 })
 
+
 app.listen(PORT, () => {
-    console.log("app launched, listening on port ", PORT);
+    console.log("Example app listening on port", PORT);
 });
