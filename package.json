@@ -1,17 +1,18 @@
 {
   "name": "spa",
   "version": "1.0.0",
-  "main": "sp-app/dist/index.min.js",
+  "main": "dist/index.min.js",
   "license": "MIT",
   "source": "./sp-app/src/app/index.jsx",
   "scripts": {
     "start-web": "parcel -p 8084",
-    "build": "parcel build",
+    "build": "parcel build ./sp-app/src/app/index.jsx",
     "start-dev": "nodemon ./sp-app/server.js",
     "start": "forever ./sp-app/server.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.1.1",
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "forever": "^4.0.3",
     "fs": "^0.0.1-security",
