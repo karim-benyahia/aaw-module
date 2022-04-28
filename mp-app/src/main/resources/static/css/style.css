@@ -102,7 +102,7 @@ button.del-person:hover {
 }
 
 main {
-    z-index: 2;
+    z-index: 1;
     position: fixed;
     top: calc(var(--heading-height) - 6em);
     left: 15em;
@@ -155,7 +155,7 @@ a.add-person:hover {
 /*}*/
 
 header {
-    z-index: 2;
+    z-index: 3;
     position: fixed;
     width: 100%;
     height: var(--heading-height);
@@ -206,6 +206,7 @@ header img.icon {
 
 
 div.menu {
+    z-index:2;
     position: fixed;
     left: 0;
     top: 0;

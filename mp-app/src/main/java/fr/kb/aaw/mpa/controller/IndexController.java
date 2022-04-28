@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class IndexController {
+public class IndexController extends BaseController{
 
     // Injectez (inject) via application.properties.
     @Value("${welcome.message}")
@@ -31,6 +31,7 @@ public class IndexController {
 
     @GetMapping(value = {"/curse"})
     public String curse(Model model) {
+        initModel(model);
         return "curse";
     }
 
