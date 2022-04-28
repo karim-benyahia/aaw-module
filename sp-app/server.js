@@ -12,7 +12,7 @@ app.use('/', express.static('sp-app/public'));
 const apiRouter = require("./src/server/router/api-router");
 app.use("/api", apiRouter);
 
-const PORT = 8082;
+const PORT = process.env.PORT || 8082;
 
 app.get('/*', (req, res) => {
 
