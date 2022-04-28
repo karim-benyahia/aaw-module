@@ -20,6 +20,7 @@
     "react-router-dom": "6"
   },
   "devDependencies": {
+    "@parcel/transformer-sass": "2.4.0",
     "dotenv": "16.0.0",
     "nodemon": "2.0.15",
     "parcel": "2.4.0"
