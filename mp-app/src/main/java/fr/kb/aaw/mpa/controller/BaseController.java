@@ -12,6 +12,7 @@ public class BaseController {
     @Value("${author.message}") private String author;
     @Value("${curse.message}") private String curse;
     @Value("${title.message}") private String title;
+    @Value("${url.js}") private String jsUrl;
 
     @Value("${error.message}")
     protected String errorMessage;
@@ -26,5 +27,6 @@ public class BaseController {
         model.addAttribute("author", author);
         model.addAttribute("curse", curse);
         model.addAttribute("title", title);
+        model.addAttribute("jsUrl", jsUrl);
     }
 }

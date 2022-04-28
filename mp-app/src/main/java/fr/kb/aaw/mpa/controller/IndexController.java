@@ -22,9 +22,7 @@ public class IndexController extends BaseController{
     public String index(Model model) {
 
         model.addAttribute("message", message);
-        model.addAttribute("author", author);
-        model.addAttribute("curse", curse);
-        model.addAttribute("title", title);
+        initModel(model);
 
         return "index";
     }

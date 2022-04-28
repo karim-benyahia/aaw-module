@@ -59,9 +59,9 @@ const Li = ({active, menu, onClick}) => {
             <li className={active === href ? "active" : ""} onClick={() => !children && onClick(name)}>
                 {
                     href && active === href ?
-                        <i className={icon}>{label}</i>
+                        <span><i className={icon}></i>{label}</span>
                         :
-                        <Link to={{pathname: href}}><i className={icon}>{label}</i> </Link>
+                        <Link to={{pathname: href}}><i className={icon}></i> {label}</Link>
                 }
 
             </li>
