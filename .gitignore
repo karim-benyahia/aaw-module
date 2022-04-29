@@ -2,7 +2,7 @@
 *.iml
 
 node_modules/
-dist/
+
 .parcel-cache/
 
 HELP.md
@@ -29,7 +29,6 @@ target/
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
-/dist/
 /nbdist/
 /.nb-gradle/
 build/
