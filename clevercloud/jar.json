@@ -4,6 +4,6 @@
     "goal": "install"
   },
   "deploy": {
-    "jarName": "mp-app/target/mpa-0.0.1-SNAPSHOT.jar"
+    "jarName": "target/mpa-0.0.1-SNAPSHOT.jar"
   }
 }
