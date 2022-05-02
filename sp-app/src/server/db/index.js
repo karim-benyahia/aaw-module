@@ -52,6 +52,23 @@ let deletePerson = (id) => {
     });
 }
 
+const addPerson = ({id, firstName, lastName, event}) => {
+    return new Promise((resolve, reject) => {
+        query({
+                name: "add-person-" + id,
+                text: `insert into person (id, first_name, last_name, event_id) values($1,$2,$3,$4);`,
+                values: [id, firstName, lastName, event.id]
+            },
+            (err, res) => {
+                if (err) {
+                    reject(err);
+                    return;
+                }
+                resolve(res.rows);
+            }
+        );
+    });
+}
 
 const events = () => {
     return new Promise((resolve, reject) => {
@@ -108,11 +125,31 @@ const deleteEvent = (id) => {
     });
 }
 
+const addEvent = ({id, name, date}) => {
+    return new Promise((resolve, reject) => {
+        query({
+                name: "add-event-" + id,
+                text: `insert into event (id, name, date) values($1,$2,$3);`,
+                values: [id, name, date]
+            },
+            (err, res) => {
+                if (err) {
+                    reject(err);
+                    return;
+                }
+                resolve(res.rows);
+            }
+        );
+    });
+}
+
 module.exports = {
     persons,
     deletePerson,
+    addPerson,
     deleteEvent,
-    events, event
+    events, event,
+    addEvent
 }
 
 

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {persons, deletePerson, event} = require("../db");
+const {persons, deletePerson, event, addPerson} = require("../db");
 const {v4} = require('uuid');
 
 router.get("/", async (req, res) => {
@@ -26,7 +26,7 @@ function getNextId() {
 router.post("/", (req, res) => {
     const person = req.body;
     person.id = getNextId();
-    persons.push(person);
+    addPerson(person)
     res.send(persons);
 })
 
