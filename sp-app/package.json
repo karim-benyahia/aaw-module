@@ -1,0 +1,30 @@
+{
+  "name": "spa",
+  "version": "1.0.0",
+  "license": "MIT",
+  "source": "./src/app/index.jsx",
+  "scripts": {
+    "start-web": "parcel -p 8084",
+    "build": "parcel build ./src/app/index.html",
+    "start-dev": "nodemon ./server.js",
+    "start": "forever ./server.js"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "6.1.1",
+    "express": "4.17.3",
+    "forever": "4.0.3",
+    "fs": "0.0.1-security",
+    "pg": "^8.7.3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-router-dom": "6",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "2.4.0",
+    "dotenv": "16.0.0",
+    "nodemon": "2.0.15",
+    "parcel": "2.4.0"
+  }
+}
