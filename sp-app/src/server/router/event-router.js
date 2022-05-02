@@ -1,21 +1,13 @@
 const express = require("express");
 const router = express.Router();
-
-let events = [
-    {
-        id:1,
-        name:"Mud Day",
-        date:new Date()
-    },
-    {
-        id:2,
-        name:"Vide grenier",
-        date:new Date()
-    }
-]
+const {events, deleteEvent} = require("../db");
 
 router.get("/", (req, res)=>{
-    res.send(events);
+    events()
+        .then(resp=>{
+            console.log(resp);
+            res.send(resp);
+        })
 })
 
 router.post("/", (req, res)=>{
@@ -29,11 +21,16 @@ router.post("/", (req, res)=>{
 })
 
 router.delete("/:id", (req, res)=>{
-    events = events.filter(p=>p.id !== Number(req.params.id))
-    res.send(events);
+    deleteEvent(req.params.id)
+        .then(res=>{
+            eventRepo.events()
+                .then(resp=>{
+                    console.log(resp);
+                    res.send(resp);
+                })
+        })
 })
 
 module.exports= {
     eventRouter:router,
-    events
 }

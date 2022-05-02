@@ -60,12 +60,12 @@ const persons = () => {
                                 <table className="styled-table" style={{flex: "1", margin: "0"}}>
                                     <tbody>
                                     {
-                                        persons && persons.filter(p=>Number(p.event.id) === event.id).map(person => {
+                                        persons && persons.filter(p=>p.event.id === event.id).map(person => {
                                             return (
                                                 <tr key={person.id}>
                                                     <td style={{width: "100px"}}>{person.id}</td>
-                                                    <td>{person.firstName}</td>
-                                                    <td>{person.lastName}</td>
+                                                    <td>{person.first_name}</td>
+                                                    <td>{person.last_name}</td>
                                                     <td style={{width: "50px", padding: 0, textAlign: "center"}}>
                                                         <div
                                                               style={{
@@ -73,7 +73,7 @@ const persons = () => {
                                                                   justifyContent: "center",
                                                                   alignItems: "center"
                                                               }}>
-                                                            <button title={'Supprimer ' + person.firstName}
+                                                            <button title={'Supprimer ' + person.first_name}
                                                                     type="submit"
                                                                     onClick={()=>deletePerson(person)}
                                                                     className="del-person">
