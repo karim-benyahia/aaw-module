@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 8082;
 app.get('/*', (req, res) => {
 
 
-    fs.readFile('./src/app/index.html', 'utf8', function (err, html) {
+    fs.readFile('./dist/index.html', 'utf8', function (err, html) {
         if (err) {
             console.error(err);
         } else {

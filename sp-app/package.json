@@ -6,9 +6,21 @@
   "main": "dist/index.min.js",
   "scripts": {
     "start-web": "parcel -p 8084",
-    "build": "parcel build ./src/app/index.jsx ",
+    "build": "parcel build --target frontend",
     "start-dev": "nodemon ./server.js",
     "start": "forever ./server.js"
+  },
+  "targets": {
+    "frontend": {
+      "source": "./src/app/index.html",
+      "distDir": "./dist",
+      "context": "browser",
+      "engines": {
+        "browsers": "> 0.2%"
+      },
+      "includeNodeModules": true,
+      "outputFormat": "esmodule"
+    }
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "dependencies": {
