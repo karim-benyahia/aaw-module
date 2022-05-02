@@ -1,32 +1,17 @@
 const express = require("express");
 const router = express.Router();
-
+const {persons, deletePerson} = require("../db");
 const {events} = require("./event-router");
-
-let persons = [
-    {
-        id:1,
-        firstName:"Bill",
-        lastName:"Gates",
-        event :events[0]
-    },
-    {
-        id:2,
-        firstName:"Bill",
-        lastName:"Cowsby",
-        event :events[1]
-    }
-]
-
+import { v4 as uuidv4 } from 'uuid';
 
 router.get("/", (req, res)=>{
-    res.send(persons);
+    persons()
+        .then(res.send)
+    ;
 })
 
 function getNextId() {
-    let values = persons.map(p => p.id);
-    let max = Math.max(...values);
-    return max+1;
+    return uuidv4();
 }
 
 router.post("/", (req, res)=>{
@@ -37,8 +22,11 @@ router.post("/", (req, res)=>{
 })
 
 router.delete("/:id", (req, res)=>{
-    persons = persons.filter(p=>p.id !== Number(req.params.id))
-    res.send(persons);
+    deletePerson(req.params.id)
+        .then(res=>{
+            persons()
+                .then(res.send)
+        })
 })
 
 module.exports= {
