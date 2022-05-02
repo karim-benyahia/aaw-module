@@ -9,7 +9,7 @@ const app = express(); // instantiate Express app
 app.use(express.json());
 
 app.use('/', express.static('dist'));
-app.use('/', express.static('sp-app/public'));
+app.use('/', express.static('public'));
 
 const apiRouter = require("./src/server/router/api-router");
 app.use("/api", apiRouter);
