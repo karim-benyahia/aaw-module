@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "license": "MIT",
   "source": "./src/app/index.jsx",
+  "main": "dist/index.min.js",
   "scripts": {
     "start-web": "parcel -p 8084",
-    "build": "parcel build ./src/app/index.html",
+    "build": "parcel build ./src/app/index.jsx ",
     "start-dev": "nodemon ./server.js",
     "start": "forever ./server.js"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "dependencies": {
     "@fortawesome/fontawesome-free": "6.1.1",
+    "@swc/helpers": "^0.3.10",
     "express": "4.17.3",
     "forever": "4.0.3",
     "fs": "0.0.1-security",
