@@ -8,6 +8,7 @@ import Footer from "./footer"
 import Events from "../views/event/events"
 import AddEvent from "../views/event/add-event"
 import Persons from "../views/person/persons"
+import Curse from "../views/curse/curse"
 import AddPerson from "../views/person/add-person"
 import Home from "../views/home"
 
@@ -34,6 +35,7 @@ const App = () => {
                 <Route path="event" element={<Events/>}/>
                 <Route path="event/add" element={<AddEvent/>}/>
                 <Route path="person" element={<Persons/>}/>
+                <Route path="curse" element={<Curse/>}/>
                 <Route path="person/add" element={<AddPerson/>}/>
             </Route>
         </Routes>

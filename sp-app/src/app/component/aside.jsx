@@ -47,13 +47,26 @@ const menu = [
                 href: "/person/add",
             }
         ]
+    },
+    {
+        name: "curse",
+        label: "Cours",
+        icon: "fas fa-book",
+        href: "/curse"
+    },
+    {
+        name: "mpa",
+        label: "SpringBoot & Thymeleaf",
+        icon: "fas fa-book",
+        href: "https://aaw-module.serliapps.dev",
+        extern: true
     }
 
 ];
 
 const Li = ({active, menu, onClick}) => {
 
-    const {name, href, icon, label, children} = menu;
+    const {name, href, icon, label, children, extern} = menu;
     return (
         <>
             <li className={active === href ? "active" : ""} onClick={() => !children && onClick(name)}>
@@ -61,7 +74,12 @@ const Li = ({active, menu, onClick}) => {
                     href && active === href ?
                         <span><i className={icon}></i>{label}</span>
                         :
-                        <Link to={{pathname: href}}><i className={icon}></i> {label}</Link>
+                        (
+                            extern ?
+                                <a href={href}><i className={icon}></i> {label}</a>
+                                :
+                                <Link to={{pathname: href}}><i className={icon}></i> {label}</Link>
+                        )
                 }
 
             </li>
