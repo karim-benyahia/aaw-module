@@ -15,14 +15,14 @@
     /*--primary-color:#00743F;*/
     /*--secondary-color:#f2a104;*/
 
-    --color-body:#040C0E;
-    --color-aside:#132226;
-    --color-li:#BE9063;
-    --color-active-li:#040C0E;
-    --background-color-active-li:#A4978E;
-    --primary-color:#525B56;
-    --secondary-color:#BE9063;
-    --url-header:url(https://visme.co/blog/wp-content/uploads/2016/01/73.jpg)
+    --color-body: #040C0E;
+    --color-aside: #132226;
+    --color-li: #BE9063;
+    --color-active-li: #040C0E;
+    --background-color-active-li: #A4978E;
+    --primary-color: #525B56;
+    --secondary-color: #BE9063;
+    --url-header: url(https://visme.co/blog/wp-content/uploads/2016/01/73.jpg)
     /*url(https://images.unsplash.com/photo-1495464101292-552d0b52fe41?auto=format&fit=crop&w=1350&q=80)*/
 }
 
@@ -73,7 +73,7 @@ select {
 }
 
 label {
-    padding-left:15px;
+    padding-left: 15px;
     margin-top: 10px;
 }
 
@@ -206,7 +206,7 @@ header img.icon {
 
 
 div.menu {
-    z-index:2;
+    z-index: 2;
     position: fixed;
     left: 0;
     top: 0;
@@ -286,7 +286,7 @@ footer img {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     color: #444;
     width: -webkit-fill-available;
-    margin:0 50px
+    margin: 0 50px
 }
 
 .styled-table thead tr {
@@ -360,13 +360,32 @@ div.action {
 
 div.event-name {
     width: 100%;
-    display:flex;
+    display: flex;
     justify-content: center;
     margin: 20px;
 }
 
-img.logo-accueil{
+img.logo-accueil {
     border-radius: 25px;
     box-shadow: 1px 1px 12px 1px #fefefe;
     border: 1px solid #1c1b20;
+}
+
+.tp {
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.tp > div {
+    overflow: auto;
+    margin: 0 20px;
+    padding: 20px;
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px 1px black;
+}
+
+.tp ul li {
+    margin-bottom: 10px;
 }

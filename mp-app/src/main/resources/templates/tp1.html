@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/general.html :: head"></head>
+
+<body>
+
+<header th:replace="fragments/general.html :: header (title=${title})"></header>
+
+<aside th:replace="fragments/general.html :: index-left-menu (active='tp1')"></aside>
+
+<main class="tp">
+    <div>
+        <p>Le but de ce TP est de réaliser une application web en utilisant le framework SpringBoot et le moteur de
+            rendu Thymeleaf. Cette application gérera un ensemble d'événements. On pourra ainsi consulter la liste
+            d'événement existant, en ajouter, en supprimer.</p>
+        <h3>1- Exposer une page</h3>
+        <ul>
+            <li>Créez une classe controller, <code
+                    th:replace="fragments/general.html :: code (text='IndexController')"></code> annoter de <code
+                    th:replace="fragments/general.html :: code (text='@Controller')"></code>, dans un dossier <code
+                    th:replace="fragments/general.html :: code (text='controller')"></code> situé au même niveau que
+                votre Application
+            </li>
+            <li>Ajoutez une fonction public renvoyant une chaine de caractère et ayant comme paramètre un objet de type
+                <code th:replace="fragments/general.html :: code (text='Model')"></code>. <br/>Cette fonction devra
+                renvoyé une chaine de caractère correspondant au nom d'un fichier dans <code
+                        th:replace="fragments/general.html :: code (text='src/main/resources/templates')"></code> (ie :
+                return "toto"; signifie qu'il existe un fichier toto.html dans le dossier précédemment cité).
+            </li>
+            <li>Annotez cette fonction avec une méthode de mapping. Vu que l'on souhaite récupérer une resource/page ce
+                sera du GET, on utilisera donc l'annotation <code
+                        th:replace="fragments/general.html :: code (text='@GetMapping')"></code></li>
+            <li>Créez ensuite le fichier html correspondant dans le dossier cité ci-dessus. Celui-ci devra contenir un
+                message dans le body afin de garantir que cela fonctionne.
+            </li>
+            <li>Vous pourrez ensuite démarrer votre application afin de la tester. <code
+                    th:replace="fragments/general.html :: code (text='./mvnw spring-boot:run')"></code></li>
+        </ul>
+        <h3>2- Enrichir la page en affichant un ensemble de données récupéré depuis notre serveur</h3>
+        <ul>
+            <li>Créez un model, dans un dossier <code th:replace="fragments/general.html :: code (text='model')"></code>
+                se situant au même niveau que votre application, ajouter une classe <code
+                        th:replace="fragments/general.html :: code (text='Event')"></code>. Celle ci représentera un
+                événement : un identifiant unique, un nom et une date.
+            </li>
+            <li>Créez un context, dans un dossier <code
+                    th:replace="fragments/general.html :: code (text='context')"></code> se situant au même niveau que
+                votre application, ajouter une classe <code
+                        th:replace="fragments/general.html :: code (text='Context')"></code>, annoté par <code
+                        th:replace="fragments/general.html :: code (text='@Component')"></code>. Celle ci possèdera une
+                liste d'événement, et les méthodes permettant d'enrichir votre liste : consultation, ajout, suppression.
+            </li>
+            <li>Dans le controller créé précédemment enrichissez la méthode en ajoutant au model un attribut <code
+                    th:replace="fragments/general.html :: code (text='event')"></code> correspondant à la liste
+                d'événement stocké dans votre context. Pour ce faire vous utiliserez la méthode <code
+                        th:replace="fragments/general.html :: code (text='model.addAttribute')"></code></li>
+            <li>Complétez votre page html existante, afin d'afficher la liste des événements</li>
+            <li>Pour finir ajouter un formulaire à votre page permettant l'ajout d'un événement.
+                <br/>
+                <code>
+                    <pre>
+    &lt;form class="form-ajout"
+        th:action="@{/event}"
+        th:object="${eventForm}" method="POST"&gt;
+        &lt;label th:for="*{name}"&gt;Nom&lt;/label&gt;
+        &lt;input type="text" th:field="*{name}" required/&gt;
+        &lt;label th:for="*{date}"&gt;Date&lt;/label&gt;
+        &lt;input type="date" th:field="*{date}" required/&gt;
+        &lt;div class="action"&gt;
+            &lt;a class="annuler-ajout" href="/"&gt;Annuler&lt;/a&gt;
+            &lt;input class="valider-ajout" type="submit" value="Valider"/&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+                    </pre>
+                </code>
+            </li>
+        </ul>
+
+        <h3>3- Ajouter une base de données</h3>
+        <ul>
+            <li>Importer spring-data dans vos dépendances maven.
+            <code>
+                <pre>
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+                </pre>
+            </code>
+            </li>
+            <li>Enrichissez votre model afin d'en faire un objet persisté, modifiez votre classe <code th:replace="fragments/general.html :: code (text='Event')"></code>, ajoutez l'annotation <code th:replace="fragments/general.html :: code (text='@Entity')"></code></li>
+            <li>Créez un dossier <code th:replace="fragments/general.html :: code (text='repository')"></code> au même niveau que votre application. Y créer une interface <code th:replace="fragments/general.html :: code (text='EventRepository')"></code>, annotée par <code th:replace="fragments/general.html :: code (text='@Repository')"></code>. Celle ci devra étendre l'interface CrudRepository </li>
+            <li></li>
+        </ul>
+
+    </div>
+</main>
+
+<footer th:replace="fragments/general.html :: footer(author=${author}, curse=${curse})"></footer>
+
+</body>
+
+</html>
+

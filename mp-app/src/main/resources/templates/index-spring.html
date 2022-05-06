@@ -7,9 +7,10 @@
 
 <header th:replace="fragments/general.html :: header (title=${title})"></header>
 
-<aside th:replace="fragments/general.html :: index-left-menu (active='home')"></aside>
+<aside th:replace="fragments/general.html :: left-menu (active='home')"></aside>
 
 <main>
+    <img class="logo-accueil" th:src="@{/img/spring-tymeleaf.png}">
 </main>
 
 <footer th:replace="fragments/general.html :: footer(author=${author}, curse=${curse})"></footer>

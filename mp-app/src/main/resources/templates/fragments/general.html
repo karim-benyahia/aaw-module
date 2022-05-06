@@ -11,11 +11,11 @@
 <body>
 
 <div>
-    <aside th:fragment="aside (active)">
+    <aside th:fragment="left-menu (active)">
         <div class="menu">
             <ul>
                 <li th:if="${active} == 'home'" class="active"><i class="fas fa-home"></i> [[#{home}]]</li>
-                <li th:if="${active} != 'home'"><a href="/"><i class="fas fa-home"></i> [[#{home}]]</a></li>
+                <li th:if="${active} != 'home'"><a th:href="@{/}"><i class="fas fa-home"></i> [[#{home}]]</a></li>
 
                 <li>
                     <i class="fas fa-calendar"></i> [[#{events}]]
@@ -37,8 +37,25 @@
                     </li>
                     <li th:if="${active} != 'person-add'"><a href="/person/add"><i class="fas fa-user-plus"></i> [[#{add.attendee}]]</a></li>
                 </ul>
-                <li><a href="/curse"><i class="fas fa-book"></i> [[#{curse}]]</a></li>
-                <li><a th:href="${jsUrl}"><i class="fas fa-book"></i> Node + React app</a></li>
+            </ul>
+        </div>
+    </aside>
+
+
+    <aside th:fragment="index-left-menu (active)">
+        <div class="menu">
+            <ul>
+                <li th:if="${active} == 'curse'" class="active"><i class="fas fa-book"></i> [[#{curse}]]
+                </li>
+                <li th:if="${active} != 'curse'"><a href="/curse"><i class="fas fa-book"></i> [[#{curse}]]</a></li>
+
+                <li th:if="${active} == 'tp1'" class="active"><i class="fas fa-dumbbell"></i> TP1
+                </li>
+                <li th:if="${active} != 'tp1'"><a href="/tp1"><i class="fas fa-dumbbell"></i> TP1</a></li>
+
+                <li><a th:href="@{/index-spring}"><i class="fas fa-desktop"></i> SpringBoot + Thymeleaf</a></li>
+
+                <li><a th:href="${jsUrl}"><i class="fas fa-desktop"></i> Node + React app</a></li>
             </ul>
         </div>
     </aside>
@@ -47,7 +64,7 @@
         <div>
             <a href="index">
                 <img th:src="@{/img/webapp.png}" class="icon"/>
-                <span th:utext="#{title.message}">..!..</span>
+                <span th:utext="${title}">..!..</span>
             </a>
         </div>
     </header>
@@ -58,6 +75,10 @@
             <img th:src="@{/img/logo-serli.png}"/>
         </div>
     </footer>
+
+    <span th:fragment="code (text)">
+        <b style="color:#087a85"><i th:text="${text}"></i></b>
+    </span>
 </div>
 </body>
 </html>

@@ -23,8 +23,30 @@ public class IndexController extends BaseController{
 
         model.addAttribute("message", message);
         initModel(model);
+        model.addAttribute("title", "Architecture des Applications WEB");
 
         return "index";
+    }
+
+
+    @GetMapping(value = { "/index-spring"})
+    public String indexSpring(Model model) {
+
+        model.addAttribute("message", message);
+        initModel(model);
+        model.addAttribute("title", "Multipage Application");
+
+        return "index-spring";
+    }
+
+    @GetMapping(value = { "/tp1"})
+    public String tp1(Model model) {
+
+        model.addAttribute("message", message);
+        initModel(model);
+        model.addAttribute("title", "TP 1");
+
+        return "tp1";
     }
 
     @GetMapping(value = {"/curse"})

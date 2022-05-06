@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<table>
+    <thead>
+    <tr>
+        <td>Prenom</td>
+        <td>Nom</td>
+        <td>Evénement</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="person : ${persons}">
+        <td th:text="${person.firstName}"></td>
+        <td th:text="${person.lastName}"></td>
+        <td th:text="${person.event.name}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
