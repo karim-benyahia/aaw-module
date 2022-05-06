@@ -14,6 +14,16 @@
         <p>Le but de ce TP est de réaliser une application web en utilisant le framework SpringBoot et le moteur de
             rendu Thymeleaf. Cette application gérera un ensemble d'événements. On pourra ainsi consulter la liste
             d'événement existant, en ajouter, en supprimer.</p>
+        <h3>0- Créer un projet SpringBoot-Thymeleaf</h3>
+        <ul>
+            <li>Utilisez <a href="https://start.spring.io/" target="_blank">spring initializr</a> en ligne.</li>
+            <li>Depuis intellij <br/>
+            <img th:src="@{/img/springinitializr.png}" width="200px"/>
+            </li>
+            <li>Ajoutez spring-web et thymeleaf en dépendance<br/>
+            <img th:src="@{/img/dep.png}" width="200px">
+            </li>
+        </ul>
         <h3>1- Exposer une page</h3>
         <ul>
             <li>Créez une classe controller, <code
@@ -52,7 +62,7 @@
                 liste d'événement, et les méthodes permettant d'enrichir votre liste : consultation, ajout, suppression.
             </li>
             <li>Dans le controller créé précédemment enrichissez la méthode en ajoutant au model un attribut <code
-                    th:replace="fragments/general.html :: code (text='event')"></code> correspondant à la liste
+                    th:replace="fragments/general.html :: code (text='events')"></code> correspondant à la liste
                 d'événement stocké dans votre context. Pour ce faire vous utiliserez la méthode <code
                         th:replace="fragments/general.html :: code (text='model.addAttribute')"></code></li>
             <li>Complétez votre page html existante, afin d'afficher la liste des événements</li>
@@ -79,19 +89,36 @@
 
         <h3>3- Ajouter une base de données</h3>
         <ul>
-            <li>Importer spring-data dans vos dépendances maven.
+            <li>Importer spring-data dans vos dépendances maven ainsi que H2.
             <code>
                 <pre>
     &lt;dependency&gt;
         &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
         &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
     &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.h2database&lt;/groupId&gt;
+        &lt;artifactId&gt;h2&lt;/artifactId&gt;
+        &lt;scope&gt;runtime&lt;/scope&gt;
+    &lt;/dependency&gt;
                 </pre>
             </code>
             </li>
+            <li>Compléter votre fichier de configuration <code th:replace="fragments/general.html :: code (text='application.properties')"></code>
+                <code>
+                    <pre>
+    spring.datasource.url=jdbc:h2:file:./data/demo
+    spring.datasource.driverClassName=org.h2.Driver
+    spring.datasource.username=sa
+    spring.datasource.password=password
+    spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+                    </pre>
+                </code>
+            </li>
             <li>Enrichissez votre model afin d'en faire un objet persisté, modifiez votre classe <code th:replace="fragments/general.html :: code (text='Event')"></code>, ajoutez l'annotation <code th:replace="fragments/general.html :: code (text='@Entity')"></code></li>
             <li>Créez un dossier <code th:replace="fragments/general.html :: code (text='repository')"></code> au même niveau que votre application. Y créer une interface <code th:replace="fragments/general.html :: code (text='EventRepository')"></code>, annotée par <code th:replace="fragments/general.html :: code (text='@Repository')"></code>. Celle ci devra étendre l'interface CrudRepository </li>
-            <li></li>
+            <li>Vous devrez ensuite faire en sorte d'enrichir votre page html avec les données provenant de votre base de données.</li>
         </ul>
 
     </div>

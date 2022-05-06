@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/general.html :: head"></head>
+
+<body>
+
+<header th:replace="fragments/general.html :: header (title=${title})"></header>
+
+<aside th:replace="fragments/general.html :: index-left-menu (active='tp2')"></aside>
+
+<main class="tp">
+    <div>
+        <p>Le but de ce TP est de réaliser une application web en utilisant nodejs et react. Cette application gérera un ensemble d'événements. On pourra ainsi consulter la liste
+            d'événement existant, en ajouter, en supprimer.</p>
+        <h3>1- Exposer une page</h3>
+    </div>
+</main>
+
+<footer th:replace="fragments/general.html :: footer(author=${author}, curse=${curse})"></footer>
+
+</body>
+
+</html>
+

@@ -53,6 +53,11 @@
                 </li>
                 <li th:if="${active} != 'tp1'"><a href="/tp1"><i class="fas fa-dumbbell"></i> TP1</a></li>
 
+                <li th:if="${active} == 'tp2'" class="active"><i class="fas fa-dumbbell"></i> TP2
+                </li>
+                <li th:if="${active} != 'tp2'"><a href="/tp2"><i class="fas fa-dumbbell"></i> TP2</a></li>
+
+
                 <li><a th:href="@{/index-spring}"><i class="fas fa-desktop"></i> SpringBoot + Thymeleaf</a></li>
 
                 <li><a th:href="${jsUrl}"><i class="fas fa-desktop"></i> Node + React app</a></li>
