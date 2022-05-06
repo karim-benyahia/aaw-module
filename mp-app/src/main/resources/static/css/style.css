@@ -104,9 +104,9 @@ button.del-person:hover {
 main {
     z-index: 1;
     position: fixed;
-    top: calc(var(--heading-height) - 6em);
+    top: calc(var(--heading-height) - 4em);
     left: 15em;
-    height: calc(100vh - var(--heading-height));
+    height: calc(100vh - var(--heading-height) - 3em);
     width: calc(100vw - 15em);
     display: flex;
     flex-direction: column;
