@@ -49,8 +49,18 @@ public class IndexController extends BaseController{
         return "tp1";
     }
 
-    @GetMapping(value = { "/projet"})
+    @GetMapping(value = { "/tp2"})
     public String tp2(Model model) {
+
+        model.addAttribute("message", message);
+        initModel(model);
+        model.addAttribute("title", "TP 2");
+
+        return "tp2";
+    }
+
+    @GetMapping(value = { "/projet"})
+    public String projet(Model model) {
 
         model.addAttribute("message", message);
         initModel(model);

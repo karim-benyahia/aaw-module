@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/general.html :: head"></head>
+
+<body>
+
+<header th:replace="fragments/general.html :: header (title=${title})"></header>
+
+<aside th:replace="fragments/general.html :: index-left-menu (active='tp1')"></aside>
+
+<main class="tp">
+    <div>
+        <p>Le but de ce TP est de réaliser une application web en utilisant NodeJs pour le serveur et React pour le
+            front. Cette application gérera un ensemble d'événements. On pourra ainsi consulter la liste
+            d'événement existant, en ajouter, en supprimer.</p>
+        <h3>0- Créer un projet NodeJs</h3>
+        <ul>
+            <li>dans votre terminal créer un dossier</li>
+            <li>tapez la commande npm init, dites oui a tout</li>
+            <li>ajouter une dépendance vers express, nodemon, parcel, <code
+                    th:replace="fragments/general.html :: code (text='npm i express nodemon parcel')"></code></li>
+        </ul>
+        <h3>1- Exposer une page</h3>
+        <ul>
+            <li>Déclarer un serveur</li>
+            <li>Afficher le texte "Mon premier serveur NodeJs" sur le path "/message"</li>
+        </ul>
+        <h3>2- Enrichir la page en affichant un ensemble de données récupéré depuis notre serveur</h3>
+        <ul>
+            <li>créez une variable globale <code
+                    th:replace="fragments/general.html :: code (text='events')"></code></li>
+            <li>Exposez une route sur le path "/api/events" permettant de récupérer votre liste d'événements</li>
+        </ul>
+        La suite du projet consiste en la même procédure que le tp1.
+        ps: j'ai pas fini dsl
+    </div>
+</main>
+
+<footer th:replace="fragments/general.html :: footer(author=${author}, curse=${curse})"></footer>
+
+</body>
+
+</html>
+
