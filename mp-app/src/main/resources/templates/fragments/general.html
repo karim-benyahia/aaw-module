@@ -21,21 +21,27 @@
                     <i class="fas fa-calendar"></i> [[#{events}]]
                 </li>
                 <ul>
-                    <li th:if="${active} != 'event-list'"><a href="/event"><i class="fas fa-list"></i> [[#{list}]]</a></li>
+                    <li th:if="${active} != 'event-list'"><a href="/event"><i class="fas fa-list"></i> [[#{list}]]</a>
+                    </li>
                     <li th:if="${active} == 'event-list'" class="active"><i class="fas fa-list"></i>[[#{list}]]</li>
 
-                    <li th:if="${active} == 'event-add'" class="active"><i class="fas fa-calendar-plus"></i> [[#{add.event}]]
+                    <li th:if="${active} == 'event-add'" class="active"><i class="fas fa-calendar-plus"></i>
+                        [[#{add.event}]]
                     </li>
-                    <li th:if="${active} != 'event-add'"><a href="/event/add"><i class="fas fa-calendar-plus"></i> [[#{add.event}]]</a></li>
+                    <li th:if="${active} != 'event-add'"><a href="/event/add"><i class="fas fa-calendar-plus"></i>
+                        [[#{add.event}]]</a></li>
                 </ul>
                 <li><i class="fas fa-user"></i> [[#{attendees}]]</li>
                 <ul>
                     <li th:if="${active} == 'person-list'" class="active"><i class="fas fa-list"></i> [[#{list}]]</li>
-                    <li th:if="${active} != 'person-list'"><a href="/person"><i class="fas fa-list"></i> [[#{list}]]</a></li>
-
-                    <li th:if="${active} == 'person-add'" class="active"><i class="fas fa-user-plus"></i> [[#{add.attendee}]]
+                    <li th:if="${active} != 'person-list'"><a href="/person"><i class="fas fa-list"></i> [[#{list}]]</a>
                     </li>
-                    <li th:if="${active} != 'person-add'"><a href="/person/add"><i class="fas fa-user-plus"></i> [[#{add.attendee}]]</a></li>
+
+                    <li th:if="${active} == 'person-add'" class="active"><i class="fas fa-user-plus"></i>
+                        [[#{add.attendee}]]
+                    </li>
+                    <li th:if="${active} != 'person-add'"><a href="/person/add"><i class="fas fa-user-plus"></i>
+                        [[#{add.attendee}]]</a></li>
                 </ul>
             </ul>
         </div>
@@ -45,22 +51,32 @@
     <aside th:fragment="index-left-menu (active)">
         <div class="menu">
             <ul>
-                <li th:if="${active} == 'curse'" class="active"><i class="fas fa-book"></i> [[#{curse}]]
-                </li>
+
+                <li th:if="${active} == 'curse'" class="active"><i class="fas fa-book"></i> Support</li>
                 <li th:if="${active} != 'curse'"><a href="/curse"><i class="fas fa-book"></i> [[#{curse}]]</a></li>
+                <li>TP</li>
+                <ul>
 
-                <li th:if="${active} == 'tp1'" class="active"><i class="fas fa-dumbbell"></i> TP1
+                    <li th:if="${active} == 'tp1'" class="active"><i class="fas fa-dumbbell"></i> TP1
+                    </li>
+                    <li th:if="${active} != 'tp1'"><a href="/tp1"><i class="fas fa-dumbbell"></i> TP1</a></li>
+
+                    <li th:if="${active} == 'tp3'" class="active"><i class="fas fa-dumbbell"></i> TP SpringBoot Security
+                    </li>
+                    <li th:if="${active} != 'tp3'"><a href="/tp3"><i class="fas fa-dumbbell"></i> TP SpringBoot Security</a>
+                    </li>
+                </ul>
+
+                <li>Web App Exemple</li>
+                <ul>
+                    <li><a th:href="@{/index-spring}"><i class="fas fa-desktop"></i> SpringBoot + Thymeleaf</a></li>
+
+                    <li><a th:href="${jsUrl}"><i class="fas fa-desktop"></i> Node + React app</a></li>
+                </ul>
+                <li th:if="${active} == 'tp2'" class="active"><i class="fas fa-tasks"></i> Projet
                 </li>
-                <li th:if="${active} != 'tp1'"><a href="/tp1"><i class="fas fa-dumbbell"></i> TP1</a></li>
+                <li th:if="${active} != 'tp2'"><a href="/tp2"><i class="fas fa-tasks"></i> Projet</a></li>
 
-                <li th:if="${active} == 'tp2'" class="active"><i class="fas fa-dumbbell"></i> TP2
-                </li>
-                <li th:if="${active} != 'tp2'"><a href="/tp2"><i class="fas fa-dumbbell"></i> TP2</a></li>
-
-
-                <li><a th:href="@{/index-spring}"><i class="fas fa-desktop"></i> SpringBoot + Thymeleaf</a></li>
-
-                <li><a th:href="${jsUrl}"><i class="fas fa-desktop"></i> Node + React app</a></li>
             </ul>
         </div>
     </aside>

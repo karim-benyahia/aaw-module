@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/general.html :: head"></head>
+
+<body>
+
+<header th:replace="fragments/general.html :: header (title=${title})"></header>
+
+<aside th:replace="fragments/general.html :: index-left-menu (active='tp3')"></aside>
+
+<main>
+    <div>
+        <a class="link-tp" style="text-decoration: none; color:white;"
+                href="https://github.com/Serli/spring-security-workshop"
+                target="_blank">
+            <button >
+                <img th:src="@{/img/github.png}" height="64px"/>
+                <span>Lien vers le TP SpringBoot - Security</span>
+            </button>
+        </a>
+    </div>
+</main>
+
+<footer th:replace="fragments/general.html :: footer(author=${author}, curse=${curse})"></footer>
+
+</body>
+
+</html>
+

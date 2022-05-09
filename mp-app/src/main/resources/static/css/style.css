@@ -389,3 +389,48 @@ img.logo-accueil {
 .tp ul li {
     margin-bottom: 10px;
 }
+
+a.link-tp {
+    cursor:pointer;
+}
+
+a.link-tp button{
+    cursor:pointer;
+    display: flex;
+    align-items: center;
+    font-size:1.5em;
+    background-color: white;
+    color:#444;
+    border-radius: 5px;
+    border:none;
+    padding:0 10px 0 0;
+}
+
+a.link-tp button span {
+    margin-left: 10px;
+
+}
+
+a.link-tp button img {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding:5px;
+    border-right:1px inset #dedede;
+}
+
+.schema {
+    display:flex;
+    justify-content: space-between;
+}
+
+.schema table {
+    border:1px solid #444
+}
+.schema table thead th {
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+.schema table tbody td {
+    border-bottom:1px solid #dedede;
+}

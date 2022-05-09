@@ -54,9 +54,19 @@ public class IndexController extends BaseController{
 
         model.addAttribute("message", message);
         initModel(model);
-        model.addAttribute("title", "TP 2");
+        model.addAttribute("title", "PROJET");
 
         return "tp2";
+    }
+
+    @GetMapping(value = { "/tp3"})
+    public String tp3(Model model) {
+
+        model.addAttribute("message", message);
+        initModel(model);
+        model.addAttribute("title", "TP 3");
+
+        return "tp3";
     }
 
     @GetMapping(value = {"/curse"})

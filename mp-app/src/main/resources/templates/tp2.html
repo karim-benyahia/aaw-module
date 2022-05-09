@@ -11,9 +11,141 @@
 
 <main class="tp">
     <div>
-        <p>Le but de ce TP est de réaliser une application web en utilisant nodejs et react. Cette application gérera un ensemble d'événements. On pourra ainsi consulter la liste
-            d'événement existant, en ajouter, en supprimer.</p>
-        <h3>1- Exposer une page</h3>
+        <p>Le but de ce TP est de réaliser une application web en utilisant nodejs et react. Cette application gérera des événements découpés en manches. Il faudra donc permettre aux utilisateurs de se
+            connecter/s'inscrire, sinon quoi il ne sauront qu'en simple consultation.
+            On pourra ainsi consulter ce planning, et venir s'y inscrire.
+            Vous pourrez en option faire un mode administrateur.
+        </p>
+        <h3>1- Planning / non connecté</h3>
+        <ul>
+            <li>Sur la page d'accueil, on observe la liste des plannings/événements</li>
+            <li>Il faut pouvoir visualiser un planning, celui ci est représenté par différentes manches, chaque manche
+                posséde un nom, et on peut inscrire autant de participants que l'ont souhaite par manche.
+            </li>
+        </ul>
+        <h3>2- Connection</h3>
+        <ul>
+            <li>Réalisez une page de connection/inscription</li>
+            <li>Suite à une inscription, l'utilisateur créé devra être stocké dans votre base de données, afin de lui
+                permettre de se connecter la fois d'après.
+            </li>
+        </ul>
+        <h3>3- Planning / connecté</h3>
+        <ul>
+            <li>Une fois connecté, vous devrez pouvoir visualiser le planning, et vous inscrire aux différentes
+                manches
+            </li>
+        </ul>
+        <h3>4- Sécurité</h3>
+        <ul>
+            <li>Il faudra mettre en place un mécanisme de token stocké en base de données</li>
+            <li>Ce token doit avoir une expiration</li>
+        </ul>
+        <h3>5- Admninistration</h3>
+        <ul>
+            <li>l'admninistrateur devra pouvoir créer un planning</li>
+            <li>inscrire une personne existante</li>
+        </ul>
+
+        <div class="schema">
+            <table>
+                <thead>
+                <tr>
+                    <th>planning</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>id - uuid</td>
+                </tr>
+                <tr>
+                    <td>name - string</td>
+                </tr>
+                <tr>
+                    <td>date - date</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>manche</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>id - uuid</td>
+                </tr>
+                <tr>
+                    <td>name - string</td>
+                </tr>
+                <tr>
+                    <td>ordre - integer</td>
+                </tr>
+                <tr>
+                    <td>planning_id - uuid</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>user</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>id - uuid</td>
+                </tr>
+                <tr>
+                    <td>first_name - string</td>
+                </tr>
+                <tr>
+                    <td>last_name- string</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>inscription</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>planning_id</td>
+                </tr>
+                <tr>
+                    <td>manche_id</td>
+                </tr>
+                <tr>
+                    <td>user_id</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>token</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>token - uuid</td>
+                </tr>
+                <tr>
+                    <td>user_id - uuid</td>
+                </tr>
+                <tr>
+                    <td>expired_date - date</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </main>
 
