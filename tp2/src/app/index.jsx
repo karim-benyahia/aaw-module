@@ -1,34 +1,36 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-let Comp = ()=>{
+let Comp = () => {
     return <div>Salut React</div>;
 }
 
 class Application extends React.Component {
     constructor(props) {
         super(props);
-        this.state={
-            events:[],
-            loading:false
+        // initialisation de l'état du composant
+        // ici un tableau d'événements vide
+        this.state = {
+            events: [],
         }
     }
 
+    // Méthode d'initialisation de notre composant
+    // cette méthode est appelé par React suite au premier rendu
     componentDidMount() {
-        this.setState({loading:true});
+        // Appel vers notre serveur
         fetch('/api/events')
-            .then((res)=>res.json())
-            .then((eventsReponse)=>{
-                this.setState({loading:false, events:eventsReponse})
-                console.log("retour appel http")
+            .then((res) => res.json())
+            .then((eventsReponse) => {
+                // on met à jour l'état de notre composant
+                // ce qui forcera son rendu, donc l'appel à la méthode render
+                this.setState({events: eventsReponse})
             })
-            console.log("fin method")
     }
 
-    render(){
-        const {loading, events} = this.state;
-        console.log("render", loading, events);
-        return(
+    render() {
+        const {events} = this.state; // équivalent à const events = this.state.events;
+        return (
             <div className="container">
                 <table className="table">
                     <thead>
@@ -39,8 +41,10 @@ class Application extends React.Component {
                     </thead>
                     <tbody>
                     {
+                        // on boucle sur notre liste d'événements, afin de les afficher
+                        // ici on transforme chaque event en un <tr>
                         events && events
-                            .map((event)=>{
+                            .map((event) => {
                                 return <tr>
                                     <td>{event.id}</td>
                                     <td>{event.name}</td>
@@ -54,5 +58,5 @@ class Application extends React.Component {
     }
 }
 
-ReactDOM.render(<Application/>
-, document.getElementById("root"))
+ReactDOM.render(<Comp/>
+    , document.getElementById("root"))

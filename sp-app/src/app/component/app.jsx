@@ -11,12 +11,13 @@ import Persons from "../views/person/persons"
 import Curse from "../views/curse/curse"
 import AddPerson from "../views/person/add-person"
 import Home from "../views/home"
+import Tp2 from "../views/tp/tp2"
 
 const App = () => {
 
 
 
-    const Main = () => {
+    const Main = (props) => {
         return (
             <div>
                 <Aside/>
@@ -35,9 +36,9 @@ const App = () => {
                 <Route path="event" element={<Events/>}/>
                 <Route path="event/add" element={<AddEvent/>}/>
                 <Route path="person" element={<Persons/>}/>
-                <Route path="curse" element={<Curse/>}/>
                 <Route path="person/add" element={<AddPerson/>}/>
             </Route>
+                <Route path="tp2" element={<Tp2/>}/>
         </Routes>
 
     )

@@ -18,19 +18,107 @@
         <ul>
             <li>dans votre terminal créer un dossier</li>
             <li>tapez la commande npm init, dites oui a tout</li>
-            <li>ajouter une dépendance vers express, nodemon, parcel, <code
-                    th:replace="fragments/general.html :: code (text='npm i express nodemon parcel')"></code></li>
+            <li>ajouter une dépendance vers express, nodemon, parcel, react, react-dom <code>npm i express nodemon
+                parcel react react-dom</code>
+            </li>
         </ul>
         <h3>1- Exposer une page</h3>
         <ul>
             <li>Déclarer un serveur</li>
             <li>Afficher le texte "Mon premier serveur NodeJs" sur le path "/message"</li>
+            <li>Créez un dossier <code>public</code> à la racine
+                du projet
+            </li>
+            <li>Créez iun fichier index.html</li>
+            <li>Dans le fichier serveur.js exposez de manière static le dossier <code>public</code>
+                <p>
+                    <code>app.use(express.static("public"));</code>
+                </p>
+            </li>
+
+        </ul>
+        <h3>2- Créez une application React</h3>
+        <ul>
+            <li>Créez un dossier src/app à la racine du projet</li>
+            <li>Créez un fichiez index.jsx dans ce dossier
+                <p>
+                <pre>
+                    <code>
+    import React from "react";
+    import ReactDOM from "react-dom";
+
+    let Comp = ()=>{
+        return &lt;div>Salut React&lt;/div>;
+    }
+
+    ReactDOM.render(<Comp/>, document.getElementById("root"))
+                </code>
+                </pre>
+
+                </p>
+            </li>
+            <li>Configurez parcel : dans le fichier package.json ajoutez un script
+                <p><code>"start-web": "parcel ./src/app/index.jsx"></code></p>
+            </li>
+            <li>Vous pourrez ensuite démarrer ce serveur via la commande <code>npm run start-web</code></li>
+            <li>On constate que celui ci démarre sur le port 1234, et ainsi que l'on trouve le js généré sur
+                http://localhost:1234/index.js
+            </li>
+            <li>Il faudra ainsi ajouter dans votre page HTML une balise <code>&lt;div id="root">&lt;/div&gt;</code> afin
+                d'y injecter votre composant Comp comme vu ci-dessus
+            </li>
+            <li>Ajouter une balise avant la fermeture de votre balise body<code>&lt;script
+                src="http://localhost:1234/index.js"&gt;&lt;/script&gt;</code>, ceci permettra d'executer votre code
+                react et ainsi permettre l'affichage de votre application
+            </li>
         </ul>
         <h3>2- Enrichir la page en affichant un ensemble de données récupéré depuis notre serveur</h3>
         <ul>
-            <li>créez une variable globale <code
-                    th:replace="fragments/general.html :: code (text='events')"></code></li>
-            <li>Exposez une route sur le path "/api/events" permettant de récupérer votre liste d'événements</li>
+            <li>créez une variable globale <code>const events = [{id:1, name:'Event 1'}, {id:2, name:'Event 2'}]</code>
+                dans le fichier server.js, celle ci représentera la liste des événements
+            </li>
+            <li>Exposez une route sur le path "/api/events" permettant de récupérer votre liste d'événements
+                <p>
+                <pre>
+                <code>
+    const events = [{id:1, name:"first"}, {id:2, name:"second"}];
+
+    app.get("/api/events", (req, res)=>{
+        res.send(events)
+    });
+                </code>
+                </pre>
+                </p>
+            </li>
+        </ul>
+
+        <ul>
+            <li>Il faudra maintenant appeler notre service depuis notre application react</li>
+            <li>Revenons sur notre fichier index.jsx, et y créer un "Class Component"
+            <p>
+<pre>
+                    <code>
+    class Application extends React.Component {
+        constructor(props) {
+            super(props);
+            // initialisation de l'état du composant
+            // ici un tableau d'événements vide
+            this.state = {
+                events: [],
+            }
+        }
+
+        render(){
+            return(
+                &lt;div>Mon app&lt;/div>
+            )
+        }
+    }
+
+                    </code>
+                </pre>
+            </p>
+            </li>
         </ul>
         La suite du projet consiste en la même procédure que le tp1.
         ps: j'ai pas fini dsl
