@@ -43,7 +43,7 @@ const tp2 = () => {
                         </li>
 
                     </ul>
-                    <h3>2- Créez une application React</h3>
+                    <h3>2- Créer une application React</h3>
                     <ul>
                         <li>Créez un dossier src/app à la racine du projet</li>
                         <li>Créez un fichiez index.jsx dans ce dossier
@@ -83,7 +83,7 @@ let Comp = ()=>{
                             ceci permettra d'executer votre code react et ainsi permettre l'affichage de votre application
                         </li>
                     </ul>
-                    <h3>2- Enrichir la page en affichant un ensemble de données récupéré depuis notre serveur</h3>
+                    <h3>3- Enrichir la page en affichant un ensemble de données récupéré depuis notre serveur</h3>
                     <ul>
                         <li>créez une variable globale <SyntaxHighlighter language="javascript"
                                                                           style={docco}>{`const events = [{id:1, name:'Event 1'}, {id:2, name:'Event 2'}]`}</SyntaxHighlighter>
@@ -148,6 +148,30 @@ componentDidMount() {
                         </li>
                         <li>Pour finir modifiez la méthode render afin d'y afficher un tableau de vos résultats</li>
                     </ul>
+                    <h3>4- Envoyer des données au serveur</h3>
+                    <ul>
+                        <h4>Côté Serveur</h4>
+                        <li>Créez un endpoint permettant d'ajouter un événement a votre liste d'événement existant</li>
+                    </ul>
+                    <ul>
+                        <h4>Côté Front</h4>
+                        <li>Dans cette partie nous allons ajouter un formulaire a notre page html, dans lequel vous aurez un champ de saisie et un bouton de validation. Celui ci permettra l'ajout d'un nouvel événement.</li>
+                        <li>Vous devrez ensuite ajouter une action sur la validation du formulaire cette action devra appeler votre serveur avec la METHOD POST, et contenant dans son body l'objet à sauvegarder</li>
+                    </ul>
+                    <h3>5- Routing coté React</h3>
+                    <ul>
+                        <li>Nous utiliserons ici la librairie react-router-dom
+                            <SyntaxHighlighter language="javascript" style={docco}>
+                                {"npm i react-router-dom"}
+                            </SyntaxHighlighter>
+                            Je vous invite par manque de temps à lire la doc afin de le mettre en place
+                            <a href="https://v5.reactrouter.com/web/guides/quick-start" target="_blank"> react-router-dom</a>
+                        </li>
+                        <li>Vous pourrez mettre en place différentes pages dans votre application, créez une page pour les événements et une page pour les participants</li>
+                        <li>Pour les participants suivez ce que l'on a fait au dessus afin de créer votre context participant, et les endpoints correspondant.</li>
+                        <li>Ajouter une page inscription, vous permettant d'inscrire un participant à un événement.</li>
+                    </ul>
+
                 </div>
             </main>
             <Footer author="Karim Benyahia" curse="AAW"/>

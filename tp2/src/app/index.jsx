@@ -12,6 +12,7 @@ class Application extends React.Component {
         // ici un tableau d'événements vide
         this.state = {
             events: [],
+            name:""
         }
     }
 
@@ -19,6 +20,10 @@ class Application extends React.Component {
     // cette méthode est appelé par React suite au premier rendu
     componentDidMount() {
         // Appel vers notre serveur
+        this.loadEvent();
+    }
+
+    loadEvent() {
         fetch('/api/events')
             .then((res) => res.json())
             .then((eventsReponse) => {
@@ -28,8 +33,28 @@ class Application extends React.Component {
             })
     }
 
+
+    addEvent = (e)=>{
+        e.preventDefault();
+        fetch('/api/events', {
+            method:'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.state.event)
+        })
+            .then((res) => res.json())
+            .then((eventsReponse) => {
+                // on met à jour l'état de notre composant
+                // ce qui forcera son rendu, donc l'appel à la méthode render
+                this.setState({events: eventsReponse})
+            })
+
+    }
+
     render() {
-        const {events} = this.state; // équivalent à const events = this.state.events;
+        const {events, event} = this.state; // équivalent à const events = this.state.events;
         return (
             <div className="container">
                 <table className="table">
@@ -53,10 +78,16 @@ class Application extends React.Component {
                     }
                     </tbody>
                 </table>
+
+                <form onSubmit={this.addEvent}>
+                    <input type={"text"} value={event.name}
+                           onChange={(e)=>this.setState({name:e.currentTarget.value})}></input>
+                    <button>Valider</button>
+                </form>
             </div>
         )
     }
 }
 
-ReactDOM.render(<Comp/>
+ReactDOM.render(<Application/>
     , document.getElementById("root"))
