@@ -272,7 +272,9 @@ pgClient.connect();
                             </SyntaxHighlighter>
                         </li>
                         <li>Vous pouvez désormais utiliser le client créé pour effectuer vos requêtes
-                            <div style={{display:'grid', gridGap:'20px', gridTemplateColumns:"auto 1fr"}}>
+                            <div style={{display:'grid', gridGap:'0 20px', gridTemplateColumns:"auto 1fr"}}>
+                                <h5>Avec les mots clé async await</h5>
+                                <h5>Avec Callback</h5>
                                 <SyntaxHighlighter language="javascript" style={docco}>
                                     {`
 const events = async () => {
@@ -307,33 +309,33 @@ const event = async (id) => {
                                 </SyntaxHighlighter>
                                 <SyntaxHighlighter language="javascript" style={docco}>
                                     {`
-const events = async () => {
-    try{
-        const res = await pgClient.query({
-            name: "read-events",
-            text: 'select id, name, date
-                   from event;',
-        });
-        return res.rows;
-    } catch(err) {
-        // traitement des erreurs ici
-    }
+const events = (callback) => {
+    pgClient.query({
+        name: "read-events",
+        text: 'select id, name, date
+               from event;',
+    }, (err, res) => {
+        if (err) {
+            throw err;
+        }
+        callback(res.rows);
+    });
 }
 
-const event = async (id) => {
-    try{
-        const res = await pgClient.query({
-            name: "read-event-"+id,
-            text: 'select id, name, date
-                   from event where id=$1;',
-            values: [id]
-        });
+const event = (id, callback) => {
+    const res = await pgClient.query({
+        name: "read-event-"+id,
+        text: 'select id, name, date
+               from event where id=$1;',
+        values: [id]
+    }, (err, res) => {
+        if (err) {
+            throw err;
+        }
         // Il faudra bien évidemment traiter les cas 
         // ou la requête ne nous ramène rien
-        return res.rows[0];
-    } catch(err) {
-        // traitement des erreurs ici
-    }
+        callback(res.rows[0]);
+    });
 }                            
                             `}
                                 </SyntaxHighlighter>
