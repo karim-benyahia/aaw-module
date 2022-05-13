@@ -25,8 +25,8 @@ app.get('/*', (req, res) => {
         } else {
             let result = (process.env.MODE !== "prod")
                 ? html
-                    .replace('$js', 'http://localhost:8084/index.js')
-                    .replace('$css', 'http://localhost:8084/index.css')
+                    .replace('$js', 'http://localhost:1234/index.js')
+                    .replace('$css', 'http://localhost:1234/index.css')
 
                 : html
                     .replace('$js', '/index.min.js')

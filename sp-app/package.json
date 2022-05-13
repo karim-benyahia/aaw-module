@@ -5,7 +5,7 @@
   "source": "./src/app/index.jsx",
   "main": "dist/index.min.js",
   "scripts": {
-    "start-web": "parcel -p 8084",
+    "start-web": "parcel --hmr-port 9998",
     "build": "parcel build --target frontend",
     "start-dev": "nodemon ./server.js",
     "start": "forever ./server.js"

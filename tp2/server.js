@@ -7,8 +7,10 @@ app.use(express.json());
 app.use(express.static('public'));
 
 const events = [{id:1, name:"first"}, {id:2, name:"second"}];
+
+//recuperation des events
 app.get("/api/events", (req, res)=>{
-    res.send(events)
+    res.send(events);
 });
 
 app.post("/api/events", (req, res)=>{

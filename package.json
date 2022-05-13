@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "react-syntax-highlighter": "^15.5.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.4.0"
+  }
+}
