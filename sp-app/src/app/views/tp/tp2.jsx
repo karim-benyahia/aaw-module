@@ -344,6 +344,37 @@ const event = (id, callback) => {
 
                     </ul>
                 </div>
+                <div>
+                    Code avec l'étoile
+                    <SyntaxHighlighter language="javascript" style={docco}>
+                        {`
+                        app.get('/*', (req, res) => {
+
+
+    fs.readFile('./dist/index.html', 'utf8', function (err, html) {
+        if (err) {
+            console.error(err);
+        } else {
+            let result = (process.env.MODE !== "prod")
+                ? html
+                    .replace('$js', 'http://localhost:1234/index.js')
+                    .replace('$css', 'http://localhost:1234/index.css')
+
+                : html
+                    .replace('$js', '/index.min.js')
+                    .replace('$css', '/index.min.css')
+
+            res.writeHead(200, {"Content-Type": "text/html"});
+            res.end(result);
+        }
+    });
+})
+
+
+                        `
+                        }
+                    </SyntaxHighlighter>
+                </div>
             </main>
             <Footer author="Karim Benyahia" curse="AAW"/>
 
