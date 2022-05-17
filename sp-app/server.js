@@ -12,34 +12,7 @@ app.use('/', express.static('dist'));
 app.use('/', express.static('public'));
 
 const apiRouter = require("./src/server/router/api-router");
-app.post("/login",()=>{
-   const {username, pwd} =  req.body
 
-    const user = searchParticipant(username);
-
-
-   user.pwd == pwd ?
-       //creation du token et du cookie
-       //token aleatoire id utilisateur une date
-
-
-
-       res ajouter le cookie
-       res.redirect /:
-
-
-
-
-})
-app.use("/*", (req, res, next )=>{
-    const tokenId = req.cookies.get("MON_COOKIE")
-        //lire enbase de données
-    //faire la verif date et existance
-    else{
-        res.()
-    }
-    next();
-})
 app.use("/api", apiRouter);
 
 const PORT = process.env.PORT || 8082;
