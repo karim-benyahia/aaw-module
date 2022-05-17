@@ -343,8 +343,7 @@ const event = (id, callback) => {
                         </li>
 
                     </ul>
-                </div>
-                <div>
+
                     Code avec l'étoile
                     <SyntaxHighlighter language="javascript" style={docco}>
                         {`
@@ -375,6 +374,7 @@ const event = (id, callback) => {
                         }
                     </SyntaxHighlighter>
                 </div>
+
             </main>
             <Footer author="Karim Benyahia" curse="AAW"/>
 
