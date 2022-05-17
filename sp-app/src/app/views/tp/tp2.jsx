@@ -350,7 +350,7 @@ const event = (id, callback) => {
                         app.get('/*', (req, res) => {
 
 
-    fs.readFile('./dist/index.html', 'utf8', function (err, html) {
+    fs.readFile('./index.html', 'utf8', function (err, html) {
         if (err) {
             console.error(err);
         } else {
