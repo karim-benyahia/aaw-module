@@ -21,5 +21,18 @@
 </head>
 <body>
 <div id="main"></div>
+
+
+<script>
+    // Check that service workers are supported
+    if ('serviceWorker' in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register(new URL('/js/service-worker.min.js'));
+        });
+    }
+</script>
+
+<script type="module" src="../../public/js/install.js"></script>
 </body>
 </html>
