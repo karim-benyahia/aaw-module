@@ -15,14 +15,14 @@
   /*--primary-color:#00743F;*/
   /*--secondary-color:#f2a104;*/
 
-  --color-body:#040C0E;
-  --color-aside:#132226;
-  --color-li:#BE9063;
-  --color-active-li:#040C0E;
-  --background-color-active-li:#A4978E;
-  --primary-color:#525B56;
-  --secondary-color:#BE9063;
-  --url-header:url(https://visme.co/blog/wp-content/uploads/2016/01/73.jpg)
+  --color-body: #040C0E;
+  --color-aside: #132226;
+  --color-li: #BE9063;
+  --color-active-li: #040C0E;
+  --background-color-active-li: #A4978E;
+  --primary-color: #525B56;
+  --secondary-color: #BE9063;
+  --url-header: url(https://visme.co/blog/wp-content/uploads/2016/01/73.jpg)
   /*url(https://images.unsplash.com/photo-1495464101292-552d0b52fe41?auto=format&fit=crop&w=1350&q=80)*/
 }
 
@@ -71,7 +71,7 @@ body {
   }
 
   label {
-    padding-left:15px;
+    padding-left: 15px;
     margin-top: 10px;
   }
 
@@ -150,7 +150,6 @@ body {
   /*    !*box-shadow: 0px 0.5px 10px 0px #a2a2a2;*!*/
   /*    height: calc(var(--heading-height) - 3em);*/
   /*}*/
-
 
 
   .styled-table {
@@ -234,18 +233,68 @@ body {
 
   div.event-name {
     width: 100%;
-    display:flex;
+    display: flex;
     justify-content: center;
     margin: 20px;
   }
 
-  img.logo-accueil{
+  img.logo-accueil {
     border-radius: 25px;
     box-shadow: 1px 1px 12px 1px #fefefe;
     border: 1px solid #1c1b20;
-    max-width:50vw;
+    max-width: 50vw;
   }
 
 
+}
+
+@media (max-width: 768px) {
+  body {
+    aside {
+      display: none;
+
+      &.active{
+        display:block;
+      }
+    }
+
+    header {
+
+      > div {
+        > a {
+
+          span {
+            font-size: 0.7em;
+          }
+
+          margin: 0.5em !important
+        }
+      }
+    }
+
+    main {
+      left: 0;
+      width: 100vw;
+    }
+
+    footer {
+      left: 0;
+      width: calc(100vw - 40px);
+      margin:0 10px;
+      font-size: 0.7em;
+      height:30px;
+      img{
+        width: 50px;
+        height: 25px;
+        margin:0;
+      }
+    }
+  }
+
+  .tp {
+    >div{
+      width:calc(100vw - 80px)
+    }
+  }
 }
 

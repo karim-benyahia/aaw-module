@@ -37,7 +37,9 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@parcel/packager-raw-url": "^2.4.0",
     "@parcel/transformer-sass": "2.4.0",
+    "@parcel/transformer-webmanifest": "^2.4.0",
     "dotenv": "16.0.0",
     "nodemon": "2.0.15",
     "parcel": "2.4.0"

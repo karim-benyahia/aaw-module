@@ -156,7 +156,7 @@ const Li = ({active, menu, onClick}) => {
     );
 }
 
-const Aside = ({accueil}) => {
+const Aside = ({accueil, showAside}) => {
 
 
     const [active, setActive] = useState("home")
@@ -167,7 +167,8 @@ const Aside = ({accueil}) => {
     }, [location])
 
     return (
-        <aside>
+
+        <aside className={showAside?"active":""}>
             <div className="menu">
                 <nav>
 

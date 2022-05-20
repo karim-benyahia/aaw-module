@@ -14,14 +14,18 @@ import Home from "../views/home"
 import Tp2 from "../views/tp/tp2"
 
 const App = () => {
+    const [showAside, setShowAside] = useState(false);
 
-
+    const callShowAside = () => {
+        setShowAside(!showAside);
+        console.log("showAside",showAside);
+    }
 
     const Main = (props) => {
         return (
             <div>
-                <Aside/>
-                <Header title="SinglePage Application"/>
+                <Aside showAside={showAside}/>
+                <Header title="SinglePage Application" callShowAside={callShowAside}/>
                 <Outlet/>
                 <Footer author="Karim Benyahia" curse="AAW"/>
             </div>
@@ -38,7 +42,8 @@ const App = () => {
                 <Route path="person" element={<Persons/>}/>
                 <Route path="person/add" element={<AddPerson/>}/>
             </Route>
-                <Route path="tp2" element={<Tp2/>}/>
+            <Route path="tp2" element={<Tp2/>}/>
+            <Route path="curse" element={<Curse/>}/>
         </Routes>
 
     )

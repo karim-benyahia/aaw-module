@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Aside from "../../component/aside";
 import Header from "../../component/header";
 import Footer from "../../component/footer";
@@ -10,10 +10,17 @@ import "./tp2.scss";
 
 const tp2 = () => {
 
+const [showAside, setShowAside] = useState(false);
+
+    const callShowAside = () => {
+        setShowAside(!showAside);
+        console.log("showAside",showAside);
+    }
+
     return (
         <div>
-            <Aside accueil={true}/>
-            <Header title="SinglePage Application"/>
+            <Aside accueil={true} showAside={showAside}/>
+            <Header title="SinglePage Application" callShowAside={callShowAside}/>
             <main className={"tp"}>
                 <div>
                     <p>Le but de ce TP est de réaliser une application web en utilisant NodeJs pour le serveur et React
