@@ -36,7 +36,7 @@ body {
     min-height: 100vh;
     background-color: var(--color-body);
     color: #e7e7e7;
-    line-height: 1;
+    line-height: 1.2em;
     margin: 0;
     padding: 0;
     border: 0;
