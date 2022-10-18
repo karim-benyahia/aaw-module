@@ -11,17 +11,24 @@
 
 <main class="tp">
     <div>
-        <p>Le but de ce projet est de réaliser une application web en utilisant nodejs et react. Cette application gérera des événements découpés en manches. Il faudra donc permettre aux utilisateurs de se
-            connecter/s'inscrire, sinon quoi il ne sauront qu'en simple consultation.
-            On pourra ainsi consulter ce planning, et venir s'y inscrire.
-            Vous pourrez en option faire un mode administrateur.
+        <p>Le but de ce projet est de réaliser une application web en utilisant NodeJs et React.
+            <br/>
+            Cette Application sera le site vitrine d'un zoo. On pourra donc visiter le site en mode non connecté.
+            Il faudra aussi prévoir un mode connecté, comportant 2 rôles distincts, le rôle visiteur et le rôle
+            administrateur.
+            Les textes en <span style="color:#046c8c">bleu</span> sont optionnels, mais permettent l'excellence ;).
         </p>
-        <h3>1- Planning / non connecté</h3>
+        <h3>1- Site Vitrine / non connecté</h3>
         <ul>
-            <li>Sur la page d'accueil, on observe la liste des plannings/événements</li>
-            <li>Il faut pouvoir visualiser un planning, celui ci est représenté par différentes manches, chaque manche
-                possède un nom, et on peut inscrire autant de participants que l'on souhaite par manche.
+            <li>Sur la page d'accueil, on dispose d'un menu et d'un ensemble de texte/image décrivant votre site
+                (laisser place à votre imagination)
             </li>
+            <li>Le menu devra comporter un lien de connection/inscription</li>
+            <li>Le menu devra comporter un lien vers la liste des animaux</li>
+            <li>il faudra avoir une page comportant la liste des animaux présent dans le zoo</li>
+            <li style="color:#046c8c">permettre une recherche des animaux par nom</li>
+            <li>il faudra pouvoir visualiser un animal en cliquant dessus</li>
+            <li style="color:#046c8c">Proposer sur l'écran d'accueil une carte représentant le positionnement des animaux dans votre zoo</li>
         </ul>
         <h3>2- Connection</h3>
         <ul>
@@ -31,11 +38,11 @@
                 permettre de se connecter la fois d'après.
             </li>
         </ul>
-        <h3>3- Planning / connecté</h3>
+        <h3>3- Site / connecté</h3>
         <ul>
-            <li>Une fois connecté, vous devrez pouvoir visualiser le planning, et vous inscrire aux différentes
-                manches
-            </li>
+            <li>Une fois connecté, un lien supplémentaire apparaitra dans le menu "Favoris"</li>
+            <li>L'utilisateur pourra voir ses animaux favoris</li>
+            <li>Permettre à l'utilisateur de favoriser un ou des animaux</li>
         </ul>
         <h3>4- Sécurité</h3>
         <ul>
@@ -44,110 +51,10 @@
         </ul>
         <h3 style="color:#046c8c">5- Administration</h3>
         <ul style="color:#046c8c">
-            <li>l'administrateur devra pouvoir créer un planning</li>
-            <li>inscrire une personne existante</li>
-            <li >Déconnecter un utilisateur</li>
+            <li>l'administrateur devra pouvoir ajouter un animal</li>
+            <li>Déconnecter un utilisateur</li>
         </ul>
 
-        <div class="schema">
-            <table>
-                <thead>
-                <tr>
-                    <th>planning</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>id - uuid</td>
-                </tr>
-                <tr>
-                    <td>name - string</td>
-                </tr>
-                <tr>
-                    <td>date - date</td>
-                </tr>
-                </tbody>
-            </table>
-
-            <table>
-                <thead>
-                <tr>
-                    <th>manche</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>id - uuid</td>
-                </tr>
-                <tr>
-                    <td>name - string</td>
-                </tr>
-                <tr>
-                    <td>ordre - integer</td>
-                </tr>
-                <tr>
-                    <td>planning_id - uuid</td>
-                </tr>
-                </tbody>
-            </table>
-
-            <table>
-                <thead>
-                <tr>
-                    <th>user</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>id - uuid</td>
-                </tr>
-                <tr>
-                    <td>first_name - string</td>
-                </tr>
-                <tr>
-                    <td>last_name- string</td>
-                </tr>
-                </tbody>
-            </table>
-
-            <table>
-                <thead>
-                <tr>
-                    <th>inscription</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>planning_id</td>
-                </tr>
-                <tr>
-                    <td>manche_id</td>
-                </tr>
-                <tr>
-                    <td>user_id</td>
-                </tr>
-                </tbody>
-            </table>
-
-            <table>
-                <thead>
-                <tr>
-                    <th>token</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>token - uuid</td>
-                </tr>
-                <tr>
-                    <td>user_id - uuid</td>
-                </tr>
-                <tr>
-                    <td>expired_date - date</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
     </div>
 </main>
 
