@@ -13,36 +13,40 @@
     <div>
         <p>Le but de ce projet est de réaliser une application web en utilisant NodeJs et React.
             <br/>
-            Cette Application sera le site vitrine d'un zoo. On pourra donc visiter le site en mode non connecté.
-            Il faudra aussi prévoir un mode connecté, comportant 2 rôles distincts, le rôle visiteur et le rôle
-            administrateur.
+            Cette Application permettra la gestion d'un recueil de citation. Il y aura 2 points d'entrée, à cette application.
+            Le site web, qui vous permettra de consulter, rechercher, créer des citations.
+            Le bot discord, qui vous permettra de la meme manière de consulter les citations, d'en créer.
             Les textes en <span style="color:#046c8c">bleu</span> sont optionnels, mais permettent l'excellence ;).
         </p>
-        <h3>1- Site Vitrine / non connecté</h3>
+        <h3>1- Site web / non connecté</h3>
         <ul>
             <li>Sur la page d'accueil, on dispose d'un menu et d'un ensemble de texte/image décrivant votre site
                 (laisser place à votre imagination)
             </li>
             <li>Le menu devra comporter un lien de connection/inscription</li>
-            <li>Le menu devra comporter un lien vers la liste des animaux</li>
-            <li>il faudra avoir une page comportant la liste des animaux présent dans le zoo</li>
-            <li style="color:#046c8c">permettre une recherche des animaux par nom</li>
-            <li>il faudra pouvoir visualiser un animal en cliquant dessus</li>
-            <li style="color:#046c8c">Proposer sur l'écran d'accueil une carte représentant le positionnement des animaux dans votre zoo</li>
+            <li>Le menu devra comporter un lien vers la liste des citations</li>
+            <li>il faudra avoir une page comportant la liste des citations</li>
+            <li style="color:#046c8c">permettre une recherche des citations par contenu et/ou par auteur</li>
+            <li>il faudra pouvoir visualiser une citation en cliquant dessus, et ainsi avoir une fiche contenant la citation, l'auteur et la date d'ajout</li>
         </ul>
         <h3>2- Connection</h3>
         <ul>
-            <li>Réalisez une page de connection</li>
-            <li style="color:#046c8c">Réalisez une page d'inscription</li>
-            <li>Suite à une inscription, l'utilisateur créé devra être stocké dans votre base de données, afin de lui
-                permettre de se connecter la fois d'après.
-            </li>
+            <li>Utiliser l'api discord afin de gérer la connection</li>
         </ul>
-        <h3>3- Site / connecté</h3>
+        <h3>3- Site web / connecté</h3>
         <ul>
-            <li>Une fois connecté, un lien supplémentaire apparaitra dans le menu "Favoris"</li>
-            <li>L'utilisateur pourra voir ses animaux favoris</li>
-            <li>Permettre à l'utilisateur de favoriser un ou des animaux</li>
+            <li>Une fois connecté, un lien supplémentaire apparaitra dans le menu "Ajouter"</li>
+            <li>L'utilisateur pourra alors ajouter une citation</li>
+            <li>Permettre à l'utilisateur de favoriser une ou des citations</li>
+            <li>Permettre à l'utilisateur de consulter ses citations favorisées</li>
+        </ul>
+        <h3>4- BOT discord</h3>
+        <ul>
+            <li>Vous devrez créer un bot discord, qui vous permettra d'effectuer les operations suivantes</li>
+            <li>L'utilisateur pourra ajouter une citation</li>
+            <li>l'utilisateur pourra consulter les citations</li>
+            <li style="color:#046c8c">l'utilisateur pourra consulter les citations d'une personne</li>
+            <li>Permettre à l'utilisateur de consulter ses citations favorisées</li>
         </ul>
         <h3>4- Sécurité</h3>
         <ul>
@@ -51,9 +55,8 @@
         </ul>
         <h3 style="color:#046c8c">5- Administration</h3>
         <ul style="color:#046c8c">
-            <li>l'administrateur devra pouvoir ajouter un animal</li>
-            <li>l'administrateur devra pouvoir modifier un animal</li>
-            <li>l'administrateur devra pouvoir supprimer un animal</li>
+            <li>l'administrateur devra pouvoir ajouter une citation</li>
+            <li>l'administrateur devra pouvoir supprimer une citation</li>
             <li>Déconnecter un utilisateur</li>
         </ul>
 
