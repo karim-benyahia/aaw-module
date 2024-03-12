@@ -4,6 +4,9 @@
   "license": "MIT",
   "source": "./src/app/index.jsx",
   "main": "dist/index.min.js",
+    "engines": {
+    "node": "18"
+  },
   "scripts": {
     "start-web": "parcel --hmr-port 9998",
     "build": "parcel build --target frontend",
