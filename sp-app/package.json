@@ -13,7 +13,7 @@
     "start-web": "parcel --hmr-port 9998",
     "build": "parcel build --target frontend",
     "start-dev": "nodemon ./server.js",
-    "start": "forever ./server.js"
+    "start": "node ./server.js"
   },
   "targets": {
     "frontend": {
@@ -32,7 +32,6 @@
     "@fortawesome/fontawesome-free": "6.1.1",
     "@swc/helpers": "^0.3.10",
     "express": "4.17.3",
-    "forever": "4.0.3",
     "fs": "0.0.1-security",
     "pg": "^8.7.3",
     "react": "17.0.2",
@@ -42,7 +41,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@parcel/packager-raw-url": "^2.4.0",
+    "@parcel/packager-raw-url": "^2.12.0",
     "@parcel/transformer-sass": "2.4.0",
     "@parcel/transformer-webmanifest": "^2.4.0",
     "dotenv": "16.0.0",
@@ -51,6 +50,6 @@
   },
   "engines" : {
     "npm" : ">=8.0.0 <9.0.0",
-    "node" : ">=16.0.0 <17.0.0"
+    "node" : ">=16.0.0 <19.0.0"
   }
 }
