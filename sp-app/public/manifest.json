@@ -456,32 +456,6 @@
   "display": "standalone",
   "scope": "/",
   "theme_color": "#3367D6",
-  "shortcuts": [
-    {
-      "name": "Изω Gοds™ 1 orga?",
-      "short_name": "Orga",
-      "description": "View Изω Gοds™ 1 organisation",
-      "url": "/orga/700637899372101712",
-      "icons": [
-        {
-          "src": "/brainiac.jpg",
-          "sizes": "192x192"
-        }
-      ]
-    },
-    {
-      "name": "Изω Gοds™ 2 orga?",
-      "short_name": "Orga",
-      "description": "View Изω Gοds™ 2 organisation",
-      "url": "/orga/703612977911431259",
-      "icons": [
-        {
-          "src": "/brainiac.jpg",
-          "sizes": "192x192"
-        }
-      ]
-    }
-  ],
   "description": "AAW site"
 
 }
