@@ -42,11 +42,11 @@
   },
   "devDependencies": {
     "@parcel/packager-raw-url": "^2.12.0",
-    "@parcel/transformer-sass": "2.4.0",
-    "@parcel/transformer-webmanifest": "^2.4.0",
+    "@parcel/transformer-sass": "2.12.0",
+    "@parcel/transformer-webmanifest": "^2.12.0",
     "dotenv": "16.0.0",
     "nodemon": "2.0.15",
-    "parcel": "2.4.0"
+    "parcel": "2.12.0"
   },
   "engines" : {
     "npm" : ">=8.0.0 <9.0.0",
