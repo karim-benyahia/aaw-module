@@ -58,7 +58,8 @@ public class PersonService {
             byId.ifPresent(event -> {
                 personRepository.save(new Person().setFirstName(firstName)
                         .setLastName(lastName)
-                        .setEvent(event));
+                        .setEvent(event)
+                        .setId(UUID.randomUUID().toString()));
             });
         }
     }

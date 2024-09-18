@@ -8,7 +8,6 @@ import java.util.UUID;
 public class Person {
 
     @Id
-    @GeneratedValue
     private String id;
     private String firstName;
     private String lastName;

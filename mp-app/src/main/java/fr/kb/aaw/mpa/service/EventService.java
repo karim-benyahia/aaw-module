@@ -47,7 +47,7 @@ public class EventService {
             EventRecord newEvent = new EventRecord(UUID.randomUUID().toString(), firstName, date);
             context.add(newEvent);
         } else {
-            eventRepository.save(new Event().setName(firstName).setDate(date));
+            eventRepository.save(new Event().setName(firstName).setDate(date).setId(UUID.randomUUID().toString()));
         }
     }
 

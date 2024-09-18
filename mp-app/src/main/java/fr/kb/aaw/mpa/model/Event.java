@@ -12,7 +12,6 @@ public class Event {
     private Date date;
 
     @Id
-    @GeneratedValue
     private String id;
 
     public Event() {
