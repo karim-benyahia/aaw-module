@@ -18,11 +18,11 @@ public record Context(List<EventRecord> events,List<PersonRecord> persons) {
 
     public Context() {
         this(new ArrayList<>(), new ArrayList<>());
-        events().add(new EventRecord(UUID.randomUUID(), "Mud Day", new Date()));
-        events().add(new EventRecord(UUID.randomUUID(), "Vide grenier", new Date()));
+        events().add(new EventRecord(UUID.randomUUID().toString(), "Mud Day", new Date()));
+        events().add(new EventRecord(UUID.randomUUID().toString(), "Vide grenier", new Date()));
 
-        persons().add(new PersonRecord(UUID.randomUUID(), "Bill", "Gates", events.get(0)));
-        persons().add(new PersonRecord(UUID.randomUUID(), "Steve", "Jobs", events.get(1)));
+        persons().add(new PersonRecord(UUID.randomUUID().toString(), "Bill", "Gates", events.get(0)));
+        persons().add(new PersonRecord(UUID.randomUUID().toString(), "Steve", "Jobs", events.get(1)));
     }
 
 

@@ -29,7 +29,7 @@ public class EventService {
     @Value("${fr.kb.context}")
     private Boolean withContext;
 
-    public void delEvent(UUID id) {
+    public void delEvent(String id) {
         if (withContext) {
             List<EventRecord> eventsFiltered = context.events()
                     .stream()
@@ -44,7 +44,7 @@ public class EventService {
 
     public void saveEvent(String firstName, Date date) {
         if (withContext) {
-            EventRecord newEvent = new EventRecord(UUID.randomUUID(), firstName, date);
+            EventRecord newEvent = new EventRecord(UUID.randomUUID().toString(), firstName, date);
             context.add(newEvent);
         } else {
             eventRepository.save(new Event().setName(firstName).setDate(date));

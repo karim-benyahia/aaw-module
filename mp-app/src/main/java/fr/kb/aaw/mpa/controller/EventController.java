@@ -63,7 +63,7 @@ public class EventController extends BaseController {
     }
 
     @DeleteMapping(value = {"/event/{id}"})
-    public String delEvent(Model model, @PathVariable("id") UUID id) {
+    public String delEvent(Model model, @PathVariable("id") String id) {
 
 
         if (id != null) {

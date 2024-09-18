@@ -13,13 +13,13 @@ public class Event {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private String id;
 
     public Event() {
 
     }
 
-    public Event(UUID id, String name, Date date) {
+    public Event(String id, String name, Date date) {
         this.name = name;
         this.date = date;
         this.id=id;
@@ -36,11 +36,11 @@ public class Event {
 
 
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public Event setId(UUID id) {
+    public Event setId(String id) {
         this.id = id;
         return this;
     }

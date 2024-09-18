@@ -9,7 +9,7 @@ public class Person {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private String id;
     private String firstName;
     private String lastName;
     @ManyToOne
@@ -37,11 +37,11 @@ public class Person {
         return this;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public Person setId(UUID id) {
+    public Person setId(String id) {
         this.id = id;
         return this;
     }

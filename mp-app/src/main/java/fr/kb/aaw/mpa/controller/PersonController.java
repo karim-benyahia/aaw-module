@@ -21,7 +21,7 @@ public class PersonController extends BaseController {
     }
 
     @GetMapping(value = {"/person/add"})
-    public String showAddPersonPage(Model model, @RequestParam(required = false) UUID event) {
+    public String showAddPersonPage(Model model, @RequestParam(required = false) String event) {
 
         PersonForm personForm = new PersonForm("", "", event);
 
@@ -37,7 +37,7 @@ public class PersonController extends BaseController {
 
         String firstName = personForm.firstName();
         String lastName = personForm.lastName();
-        UUID eventId = personForm.eventId();
+        String eventId = personForm.eventId();
 
         if (!StringUtils.isEmpty(firstName)
                 && !StringUtils.isEmpty(lastName)) {
@@ -51,7 +51,7 @@ public class PersonController extends BaseController {
     }
 
     @DeleteMapping(value = {"/person/{id}"})
-    public String delPerson(Model model, @PathVariable("id") UUID id) {
+    public String delPerson(Model model, @PathVariable("id") String id) {
         if (id != null) {
             personService.delPerson(id);
             return "redirect:/person";

@@ -14,7 +14,7 @@ router.get("/", (req, res)=>{
 
 router.post("/", (req, res)=>{
     const event = req.body;
-    event.id = v4();
+    event.id = v4()+"";
     addEvent(event);
     res.send(event);
 })

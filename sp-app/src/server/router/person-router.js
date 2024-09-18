@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
 })
 
 function getNextId() {
-    return v4();
+    return v4()+"";
 }
 
 router.post("/", (req, res) => {

@@ -31,7 +31,7 @@ public class PersonService {
     @Value("${fr.kb.context}")
     private Boolean withContext;
 
-    public void delPerson(UUID id) {
+    public void delPerson(String id) {
         if (withContext) {
             List<PersonRecord> personsFiltered = context.persons()
                     .stream()
@@ -43,7 +43,7 @@ public class PersonService {
         }
     }
 
-    public void savePerson(String firstName, String lastName, UUID eventId) {
+    public void savePerson(String firstName, String lastName, String eventId) {
         if (withContext) {
             EventRecord event = context.events()
                     .stream()
@@ -51,7 +51,7 @@ public class PersonService {
                     .findFirst()
                     .orElseThrow(() -> new IllegalStateException("L'evenement n'existe pas"));
 
-            PersonRecord newPerson = new PersonRecord(UUID.randomUUID(), firstName, lastName, event);
+            PersonRecord newPerson = new PersonRecord(UUID.randomUUID().toString(), firstName, lastName, event);
             context.add(newPerson);
         } else {
             Optional<Event> byId = eventRepository.findById(eventId);
