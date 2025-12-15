@@ -47,7 +47,7 @@
                         <form th:action="@{/event/{id}(id=${event.id})}"
                               style="    display: flex; justify-content: center; align-items: center;"
                               th:method="DELETE">
-                            <button th:title="'Supprimer ' + ${event.name}" type="submit" class="del-person">
+                            <button th:title="'Supprimer ' + ${event.name}" class="del-person">
                                 <span>x</span></button>
                         </form>
                     </td>

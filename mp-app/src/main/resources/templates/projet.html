@@ -13,10 +13,10 @@
     <div>
         <p>Le but de ce projet est de réaliser une application web en utilisant NodeJs et React.
             <br/>
-            Cette Application permettra la gestion des skills des étudiants de la promo. Il y aura 2 points d'entrée, à cette application.
-            Le site web, qui vous permettra de consulter, rechercher, mettre a jour des skills.
-            Le bot discord, qui vous permettra de la meme manière de consulter les skills, d'en mettre à jour.
-            Les textes en <span style="color:#046c8c">bleu</span> permettent d'atteindre la note maximale.
+            Cette Application permettra la gestion d'un emploi du temps des étudiants de la promo sur une semaine. Il y aura 2 points d'entrée, à cette application.
+            Le site web, qui vous permettra de consulter, mettre a jour l'emploi du temps.
+            Le bot discord, qui vous permettra de la meme manière de consulter l'emploi du temps et de le mettre à jour.
+            L'ensemble des données sera stocké dans un fichier spreadsheet, avec lequel il faudra communiquer (<a href="https://docs.google.com/spreadsheets/d/1D6Y-DXBZ1_uCkmbLrgiFUSIkHSbbCIrJYMeE4z6s1lw/edit?usp=sharing">lien</a>).
         </p>
         <h3>1- Site web / non connecté</h3>
         <ul>
@@ -24,10 +24,10 @@
                 (laisser place à votre imagination)
             </li>
             <li>Le menu devra comporter un lien de connection</li>
-            <li>Le menu devra comporter un lien vers le tableau des skills</li>
-            <li>il faudra avoir une page comportant le tableau des skills</li>
-            <li style="color:#046c8c">permettre de filtrer les skills par étudiant</li>
-            <li>il faudra pouvoir visualiser un étudiant en cliquant dessus, et ainsi avoir une fiche contenant l'ensemble des skills de l'étudiant ainsi que la date de derniere maj</li>
+            <li>Le menu devra comporter un lien vers la liste des emplois du temps</li>
+            <li>il faudra avoir une page comportant la liste des emplois du temps</li>
+            <li>permettre de filtrer les emplois du temps par étudiant</li>
+            <li>il faudra pouvoir visualiser un étudiant en cliquant dessus, et ainsi avoir une fiche contenant l'emploi du temps de l'étudiant ainsi que la date de derniere maj</li>
         </ul>
         <h3>2- Connection</h3>
         <ul>
@@ -35,14 +35,14 @@
         </ul>
         <h3>3- Site web / connecté</h3>
         <ul>
-            <li>Une fois connecté, un lien supplémentaire apparaitra dans le menu "Ajouter"</li>
-            <li>L'utilisateur pourra alors mettre à jour ses skills</li>
+            <li>Une fois connecté, un lien supplémentaire apparaitra dans le menu "Modifier"</li>
+            <li>L'utilisateur pourra alors mettre à jour son emploi du temps</li>
         </ul>
         <h3>4- BOT discord</h3>
         <ul>
             <li>Vous devrez créer un bot discord, qui vous permettra d'effectuer les operations suivantes</li>
-            <li>l'utilisateur pourra consulter les skills d'un étudiant</li>
-            <li>L'utilisateur pourra mettre à jour ses skills</li>
+            <li>l'utilisateur pourra consulter l'emploi du temps d'un étudiant pour une heure donnée, pour un jour donné</li>
+            <li>L'utilisateur pourra mettre à jour son emploi du temps pour un jour donné, pour une heure donnée</li>
             <li>Le bot sera ajouter sur le serveur discord <a href="https://discord.gg/Hb25eWJrPA">AAW MODULE</a>. </li>
             <li>Vos commande devront être préfixé par un identifiant unique (trigramme de vos nom de famille), permettant d'éviter les doublons (ie: /trd-skills, /trd-set-skill)</li>
             <li>il faudra dans le readme me fournir la liste des commandes ;)</li>
@@ -53,8 +53,8 @@
             <li>Il faudra mettre en place un mécanisme de token stocké en base de données</li>
             <li>Ce token doit avoir une expiration</li>
         </ul>
-        <h3 style="color:#046c8c">5- Administration</h3>
-        <ul style="color:#046c8c">
+        <h3 >5- Administration</h3>
+        <ul>
             <li>Il y aura un rôle administrateur, vous devrez donc gérer un schéma vous permettant de savoir si un utilisateur est admin.</li>
             <li>l'administrateur devra pouvoir modifier les skills de n'importe quel utilisateur</li>
             <li>Déconnecter un utilisateur</li>

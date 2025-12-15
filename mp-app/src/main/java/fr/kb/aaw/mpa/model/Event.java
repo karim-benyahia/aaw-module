@@ -8,6 +8,7 @@ import java.util.UUID;
 @Table(name="EVENT")
 public class Event {
 
+    @Column(name="nom")
     private String name;
     private Date date;
 
